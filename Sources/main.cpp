@@ -1,34 +1,66 @@
+#include <iostream>
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
+
+using namespace std;
+
+void Initialize()
+{
+    GLenum error = glewInit();
+    if (error != GLEW_OK)
+        cout << "erreur d'initialisation de GLEW!" << endl;
+
+    // Logs
+    cout << "Version : " << glGetString(GL_VERSION) << endl;
+    cout << "Vendor : " << glGetString(GL_VENDOR) << endl;
+    cout << "Renderer : " << glGetString(GL_RENDERER) << endl;
+}
+
+void Display(GLFWwindow *window)
+{
+    int widthWindow, heightWindow;
+    glfwGetWindowSize(window, &widthWindow, &heightWindow);
+    glViewport(0, 0, widthWindow, heightWindow);
+
+    glClearColor(0.5f, 0.5f, 0.5f, 1.f);
+    glClear(GL_COLOR_BUFFER_BIT);
+}
+
+static void error_callback(int error, const char *description)
+{
+    cout << "Error GFLW " << error << " : " << description << endl;
+}
+
+static void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, GLFW_TRUE);
+}
 
 int main()
 {
     GLFWwindow *window;
 
-    /* Initialize the library */
+    glfwSetErrorCallback(error_callback);
+
     if (!glfwInit())
         return -1;
 
-    /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(640, 480, "Project name", nullptr, nullptr);
     if (!window)
     {
         glfwTerminate();
         return -1;
     }
 
-    /* Make the window's context current */
     glfwMakeContextCurrent(window);
+    glfwSetKeyCallback(window, key_callback);
+    Initialize();
 
-    /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
-        /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        /* Swap front and back buffers */
+        Display(window);
         glfwSwapBuffers(window);
-
-        /* Poll for and process events */
         glfwPollEvents();
     }
 
