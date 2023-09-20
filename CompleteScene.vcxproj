@@ -156,6 +156,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp" />
+    <ClCompile Include="Sources\Tools\GLShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\GLFW\glfw3.h" />
@@ -164,6 +165,11 @@
     <ClInclude Include="Includes\GL\glew.h" />
     <ClInclude Include="Includes\GL\glxew.h" />
     <ClInclude Include="Includes\GL\wglew.h" />
+    <ClInclude Include="Sources\Tools\GLShader.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sources\Shaders\fragment.glsl" />
+    <None Include="Sources\Shaders\vertex.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

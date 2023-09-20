@@ -1,17 +1,19 @@
-#include <cstddef>
 #include <iostream>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include "Tools/GLShader.hpp"
 
 using namespace std;
 
-float vertices[] = {-0.5f, -0.5f,
-                    0.5f, -0.5f,
-                    0.5f, 0.5f,
-                    -0.5f, 0.5f};
+GLfloat vertices[] = {-0.5f, -0.5f,
+                      0.5f, -0.5f,
+                      0.5f, 0.5f,
+                      -0.5f, 0.5f};
 
-unsigned int indices[] = {0, 1, 2,
-                          2, 3, 0};
+GLuint indices[] = {0, 1, 2,
+                    2, 3, 0};
+
+GLShader defaultShader = GLShader();
 
 void display(GLFWwindow *window)
 {
@@ -30,7 +32,7 @@ void display(GLFWwindow *window)
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void *)0);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (void *)0);
     glEnableVertexAttribArray(0);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     glDisableVertexAttribArray(0);
@@ -72,6 +74,16 @@ int main()
     GLenum error = glewInit();
     if (error != GLEW_OK)
         cout << "erreur d'initialisation de GLEW!" << endl;
+
+#ifdef _DEBUG
+    defaultShader.LoadVertexShader("Sources/Shaders/vertex.glsl");
+    defaultShader.LoadFragmentShader("Sources/Shaders/fragment.glsl");
+    defaultShader.Create();
+#else
+    defaultShader.LoadVertexShader("vertex.glsl");
+    defaultShader.LoadFragmentShader("fragment.glsl");
+    defaultShader.Create();
+#endif
 
     while (!glfwWindowShouldClose(window))
     {

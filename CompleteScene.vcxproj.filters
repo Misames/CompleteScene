@@ -13,10 +13,19 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers sources\Shaders">
+      <UniqueIdentifier>{bba0b436-2976-4d7e-9e24-9aa5b8d6e831}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Tools">
+      <UniqueIdentifier>{dab4be82-a287-4beb-ae6b-b3cb9e80efad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Tools\GLShader.cpp">
+      <Filter>Fichiers sources\Tools</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -38,5 +47,16 @@
     <ClInclude Include="Includes\GL\wglew.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Tools\GLShader.hpp">
+      <Filter>Fichiers sources\Tools</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sources\Shaders\fragment.glsl">
+      <Filter>Fichiers sources\Shaders</Filter>
+    </None>
+    <None Include="Sources\Shaders\vertex.glsl">
+      <Filter>Fichiers sources\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
