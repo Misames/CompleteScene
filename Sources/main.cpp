@@ -4,18 +4,6 @@
 
 using namespace std;
 
-void Initialize()
-{
-    GLenum error = glewInit();
-    if (error != GLEW_OK)
-        cout << "erreur d'initialisation de GLEW!" << endl;
-
-    // Logs
-    cout << "Version : " << glGetString(GL_VERSION) << endl;
-    cout << "Vendor : " << glGetString(GL_VENDOR) << endl;
-    cout << "Renderer : " << glGetString(GL_RENDERER) << endl;
-}
-
 void Display(GLFWwindow *window)
 {
     int widthWindow, heightWindow;
@@ -55,7 +43,10 @@ int main()
 
     glfwMakeContextCurrent(window);
     glfwSetKeyCallback(window, key_callback);
-    Initialize();
+
+    GLenum error = glewInit();
+    if (error != GLEW_OK)
+        cout << "erreur d'initialisation de GLEW!" << endl;
 
     while (!glfwWindowShouldClose(window))
     {
