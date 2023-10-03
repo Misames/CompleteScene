@@ -1,0 +1,44 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "mingw",
+            "command": "g++",
+            "args": [
+                "-I",
+                "Includes\\",
+                "-L",
+                "Libraries\\",
+                "-g",
+                "Sources\\**.cpp",
+                "-lopengl32",
+                "-lglew32",
+                "-lglfw3dll",
+                "-o",
+                "${workspaceFolder}\\Builds\\Release\\CompleteScene.exe",
+                // "-w"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false,
+                "close": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Tâche de build"
+        }
+    ],
+    "version": "2.0.0"
+}
