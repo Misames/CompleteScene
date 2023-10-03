@@ -5,17 +5,20 @@
             "label": "mingw",
             "command": "g++",
             "args": [
+                "-D_DEBUG",
+                "-std=c++17",
                 "-I",
                 "Includes\\",
                 "-L",
                 "Libraries\\",
                 "-g",
                 "Sources\\**.cpp",
+                "Sources\\Tools\\**.cpp",
                 "-lopengl32",
                 "-lglew32",
                 "-lglfw3dll",
                 "-o",
-                "${workspaceFolder}\\Builds\\Release\\CompleteScene.exe",
+                "${workspaceFolder}\\Builds\\Debug\\CompleteScene.exe",
                 // "-w"
             ],
             "presentation": {
