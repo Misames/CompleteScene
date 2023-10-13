@@ -1,17 +1,24 @@
+#include <iostream>
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <iostream>
-
+#include "Engine/Core/Camera.hpp"
 #include "Tools/GLShader.hpp"
 
 using namespace std;
 
-GLfloat vertices[] = {-0.5f, -0.5f, 0.5f, -0.5f, 0.5f, 0.5f, -0.5f, 0.5f};
+GLfloat vertices[] = {-0.5f, -0.5f,
+                      0.5f, -0.5f,
+                      0.5f, 0.5f,
+                      -0.5f, 0.5f};
 
-GLuint indices[] = {0, 1, 2, 2, 3, 0};
+GLuint indices[] = {0, 1,
+                    2, 2,
+                    3, 0};
 
 GLShader *defaultShader = new GLShader();
+Camera *camera = new Camera(640, 480, glm::vec3(0.0f, 0.0f, 2.0f));
 
 void display(GLFWwindow *window)
 {
@@ -24,7 +31,10 @@ void display(GLFWwindow *window)
     GLuint program = defaultShader->GetProgram();
     glUseProgram(program);
 
-    int attribLocation = glGetAttribLocation(program, "inPosition");
+    float znear = 0.1f, zfar = 1000.0f, fov = 45.0f;
+    camera->Matrix(fov, znear, zfar, defaultShader, "projection");
+
+    int attribLocation = glGetAttribLocation(program, "position");
     glEnableVertexAttribArray(attribLocation);
 
     GLuint VBO, EBO;
@@ -34,11 +44,9 @@ void display(GLFWwindow *window)
 
     glGenBuffers(1, &EBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
-                 GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(attribLocation, 2, GL_FLOAT, GL_FALSE,
-                          2 * sizeof(GLfloat), (void *)0);
+    glVertexAttribPointer(attribLocation, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (void *)0);
     glEnableVertexAttribArray(attribLocation);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     glDisableVertexAttribArray(0);
@@ -52,8 +60,7 @@ static void errorCallback(int error, const char *description)
     cout << "Error GFLW " << error << " : " << description << endl;
 }
 
-static void keyCallback(GLFWwindow *window, int key, int scancode, int action,
-                        int mods)
+static void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GLFW_TRUE);
@@ -94,6 +101,7 @@ int main()
 
     while (!glfwWindowShouldClose(window))
     {
+        camera->Inputs(window);
         display(window);
         glfwSwapBuffers(window);
         glfwPollEvents();

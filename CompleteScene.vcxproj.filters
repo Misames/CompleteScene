@@ -19,6 +19,12 @@
     <Filter Include="Fichiers sources\Tools">
       <UniqueIdentifier>{dab4be82-a287-4beb-ae6b-b3cb9e80efad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Engine">
+      <UniqueIdentifier>{45796333-7640-46c5-be18-0f6ad1929c64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Engine\Core">
+      <UniqueIdentifier>{2c811fab-8ecf-40d9-a414-bdd5112a04a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -26,6 +32,9 @@
     </ClCompile>
     <ClCompile Include="Sources\Tools\GLShader.cpp">
       <Filter>Fichiers sources\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Core\Camera.cpp">
+      <Filter>Fichiers sources\Engine\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +58,9 @@
     </ClInclude>
     <ClInclude Include="Sources\Tools\GLShader.hpp">
       <Filter>Fichiers sources\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Core\Camera.hpp">
+      <Filter>Fichiers sources\Engine\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
