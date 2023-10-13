@@ -1,19 +1,17 @@
-#include <iostream>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+
+#include <iostream>
+
 #include "Tools/GLShader.hpp"
 
 using namespace std;
 
-GLfloat vertices[] = {-0.5f, -0.5f,
-                      0.5f, -0.5f,
-                      0.5f, 0.5f,
-                      -0.5f, 0.5f};
+GLfloat vertices[] = {-0.5f, -0.5f, 0.5f, -0.5f, 0.5f, 0.5f, -0.5f, 0.5f};
 
-GLuint indices[] = {0, 1, 2,
-                    2, 3, 0};
+GLuint indices[] = {0, 1, 2, 2, 3, 0};
 
-GLShader defaultShader = GLShader();
+GLShader *defaultShader = new GLShader();
 
 void display(GLFWwindow *window)
 {
@@ -23,6 +21,12 @@ void display(GLFWwindow *window)
     glClearColor(0.5f, 0.5f, 0.5f, 1.f);
     glClear(GL_COLOR_BUFFER_BIT);
 
+    GLuint program = defaultShader->GetProgram();
+    glUseProgram(program);
+
+    int attribLocation = glGetAttribLocation(program, "inPosition");
+    glEnableVertexAttribArray(attribLocation);
+
     GLuint VBO, EBO;
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -30,10 +34,12 @@ void display(GLFWwindow *window)
 
     glGenBuffers(1, &EBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
+                 GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (void *)0);
-    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(attribLocation, 2, GL_FLOAT, GL_FALSE,
+                          2 * sizeof(GLfloat), (void *)0);
+    glEnableVertexAttribArray(attribLocation);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     glDisableVertexAttribArray(0);
 
@@ -46,7 +52,8 @@ static void errorCallback(int error, const char *description)
     cout << "Error GFLW " << error << " : " << description << endl;
 }
 
-static void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
+static void keyCallback(GLFWwindow *window, int key, int scancode, int action,
+                        int mods)
 {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GLFW_TRUE);
@@ -61,7 +68,7 @@ int main()
     if (!glfwInit())
         return -1;
 
-    window = glfwCreateWindow(640, 480, "Project name", nullptr, nullptr);
+    window = glfwCreateWindow(640, 480, "Complete Scene", nullptr, nullptr);
     if (!window)
     {
         glfwTerminate();
@@ -76,13 +83,13 @@ int main()
         cout << "erreur d'initialisation de GLEW!" << endl;
 
 #ifdef _DEBUG
-    defaultShader.LoadVertexShader("Sources/Shaders/vertex.glsl");
-    defaultShader.LoadFragmentShader("Sources/Shaders/fragment.glsl");
-    defaultShader.Create();
+    defaultShader->LoadVertexShader("Sources/Shaders/vertex.glsl");
+    defaultShader->LoadFragmentShader("Sources/Shaders/fragment.glsl");
+    defaultShader->Create();
 #else
-    defaultShader.LoadVertexShader("vertex.glsl");
-    defaultShader.LoadFragmentShader("fragment.glsl");
-    defaultShader.Create();
+    defaultShader->LoadVertexShader("vertex.glsl");
+    defaultShader->LoadFragmentShader("fragment.glsl");
+    defaultShader->Create();
 #endif
 
     while (!glfwWindowShouldClose(window))
