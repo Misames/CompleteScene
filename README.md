@@ -3,8 +3,6 @@
 ## Objectif
 
 ### Rendering :
-- Shaders
-- Transformation
 - Texturing
 - illumination & Shadowing : Phong / Blinn Phong & Lambert
 - Skybox
@@ -13,10 +11,8 @@
 - IBO / VAO
 
 ### Good practices :
-- std c++17
 - Multi-Threading
 - Smart Pointers
-- Exception
 
 ### Architecture / Design Patterns
 - MVC - MVP - MVVC
@@ -34,3 +30,8 @@
 - Input
 - Time
 - UI => imGUI
+- Sound => OpenAL
+- Render => OpenGL
+- Math => GLM
+- Window => GLFW
+- Extension => GLEW

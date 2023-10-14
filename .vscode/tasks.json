@@ -15,12 +15,13 @@
                 "Sources\\*.cpp",
                 "Sources\\Tools\\*.cpp",
                 "Sources\\Engine\\Core\\*.cpp",
+                "Sources\\Engine\\Renderer\\*.cpp",
                 "-lopengl32",
                 "-lglew32",
                 "-lglfw3dll",
                 "-o",
                 "${workspaceFolder}\\Builds\\Debug\\CompleteScene.exe",
-                // "-w"
+                "-w"
             ],
             "presentation": {
                 "echo": true,

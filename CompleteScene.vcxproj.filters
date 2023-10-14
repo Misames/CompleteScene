@@ -25,6 +25,9 @@
     <Filter Include="Fichiers sources\Engine\Core">
       <UniqueIdentifier>{2c811fab-8ecf-40d9-a414-bdd5112a04a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Engine\Renderer">
+      <UniqueIdentifier>{f25f9acc-3d70-4acb-847d-322a15e239f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -35,6 +38,12 @@
     </ClCompile>
     <ClCompile Include="Sources\Engine\Core\Camera.cpp">
       <Filter>Fichiers sources\Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Renderer\IWindow.cpp">
+      <Filter>Fichiers sources\Engine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Renderer\Window.cpp">
+      <Filter>Fichiers sources\Engine\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +70,12 @@
     </ClInclude>
     <ClInclude Include="Sources\Engine\Core\Camera.hpp">
       <Filter>Fichiers sources\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Renderer\IWindow.hpp">
+      <Filter>Fichiers sources\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Renderer\Window.hpp">
+      <Filter>Fichiers sources\Engine\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

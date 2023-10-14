@@ -160,6 +160,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Engine\Core\Camera.cpp" />
+    <ClCompile Include="Sources\Engine\Renderer\IWindow.cpp" />
+    <ClCompile Include="Sources\Engine\Renderer\Window.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\Tools\GLShader.cpp" />
   </ItemGroup>
@@ -171,6 +173,8 @@
     <ClInclude Include="Includes\GL\glxew.h" />
     <ClInclude Include="Includes\GL\wglew.h" />
     <ClInclude Include="Sources\Engine\Core\Camera.hpp" />
+    <ClInclude Include="Sources\Engine\Renderer\IWindow.hpp" />
+    <ClInclude Include="Sources\Engine\Renderer\Window.hpp" />
     <ClInclude Include="Sources\Tools\GLShader.hpp" />
   </ItemGroup>
   <ItemGroup>

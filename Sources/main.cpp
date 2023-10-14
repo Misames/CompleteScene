@@ -3,6 +3,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include "Engine/Renderer/Window.hpp"
 #include "Engine/Core/Camera.hpp"
 #include "Tools/GLShader.hpp"
 
@@ -13,9 +14,8 @@ GLfloat vertices[] = {-0.5f, -0.5f,
                       0.5f, 0.5f,
                       -0.5f, 0.5f};
 
-GLuint indices[] = {0, 1,
-                    2, 2,
-                    3, 0};
+GLuint indices[] = {0, 1, 2,
+                    2, 3, 0};
 
 GLShader *defaultShader = new GLShader();
 Camera *camera = new Camera(640, 480, glm::vec3(0.0f, 0.0f, 2.0f));
@@ -55,39 +55,21 @@ void display(GLFWwindow *window)
     glDeleteBuffers(1, &EBO);
 }
 
-static void errorCallback(int error, const char *description)
-{
-    cout << "Error GFLW " << error << " : " << description << endl;
-}
-
-static void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
-{
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, GLFW_TRUE);
-}
-
 int main()
 {
-    GLFWwindow *window;
+    Window *mainWindow = new Window();
 
-    glfwSetErrorCallback(errorCallback);
-
-    if (!glfwInit())
-        return -1;
-
-    window = glfwCreateWindow(640, 480, "Complete Scene", nullptr, nullptr);
-    if (!window)
+    try
     {
-        glfwTerminate();
+        mainWindow->Initialize(680, 460, "Complete Scene");
+    }
+    catch (const runtime_error &e)
+    {
+        cerr << e.what() << '\n';
         return -1;
     }
 
-    glfwMakeContextCurrent(window);
-    glfwSetKeyCallback(window, keyCallback);
-
-    GLenum error = glewInit();
-    if (error != GLEW_OK)
-        cout << "erreur d'initialisation de GLEW!" << endl;
+    GLFWwindow *window = mainWindow->GetHandle();
 
 #ifdef _DEBUG
     defaultShader->LoadVertexShader("Sources/Shaders/vertex.glsl");
@@ -106,9 +88,6 @@ int main()
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-
-    glfwDestroyWindow(window);
-    glfwTerminate();
 
     return 0;
 }
