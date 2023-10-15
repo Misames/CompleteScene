@@ -11,8 +11,8 @@ private:
     GLuint fragmentShader;
 
 public:
-    GLShader() : program(0), vertexShader(0), geometryShader(0), fragmentShader(0) {}
-    ~GLShader() {}
+    GLShader();
+    ~GLShader();
     inline GLuint GetProgram() { return program; }
     bool LoadVertexShader(const char *filename);
     bool LoadGeometryShader(const char *filename);

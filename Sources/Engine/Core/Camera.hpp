@@ -7,13 +7,14 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/rotate_vector.hpp>
 #include <glm/gtx/vector_angle.hpp>
+
 #include "../../Tools/GLShader.hpp"
 
 using namespace glm;
 
 class Camera
 {
-public:
+private:
     // Stores the main vectors of the camera
     vec3 position;
     vec3 orientation = vec3(0.0f, 0.0f, -1.0f);
@@ -30,8 +31,10 @@ public:
     float speed = 0.1f;
     float sensitivity = 100.0f;
 
+public:
     // Camera constructor to set up initial values
     Camera(int width, int height, vec3 position);
+    ~Camera();
 
     // Updates and exports the camera matrix to the Vertex Shader
     void Matrix(float FOVdeg, float nearPlane, float farPlane, GLShader *shader, const char *uniform);

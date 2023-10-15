@@ -4,6 +4,17 @@
 
 using namespace std;
 
+GLShader::GLShader() : program(0), vertexShader(0), geometryShader(0), fragmentShader(0)
+{
+    cout << "Init shader" << endl;
+}
+
+GLShader::~GLShader()
+{
+    Destroy();
+    cout << "Destroy shader" << endl;
+}
+
 bool ValidateShader(GLuint shader)
 {
     GLint compiled;

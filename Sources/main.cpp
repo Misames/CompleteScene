@@ -5,6 +5,7 @@
 
 #include "Engine/Renderer/Window.hpp"
 #include "Engine/Core/Camera.hpp"
+#include "Engine/Core/Texture.hpp"
 #include "Tools/GLShader.hpp"
 
 using namespace std;
@@ -17,8 +18,30 @@ GLfloat vertices[] = {-0.5f, -0.5f,
 GLuint indices[] = {0, 1, 2,
                     2, 3, 0};
 
-GLShader *defaultShader = new GLShader();
-Camera *camera = new Camera(640, 480, glm::vec3(0.0f, 0.0f, 2.0f));
+GLShader defaultShader;
+Window mainWindow;
+Texture texture;
+Camera camera = Camera(640, 480, glm::vec3(0.0f, 0.0f, 2.0f));
+
+bool Initialize()
+{
+    try
+    {
+        mainWindow.Initialize(680, 460, "Complete Scene");
+    }
+    catch (const runtime_error &e)
+    {
+        cerr << e.what() << endl;
+        return false;
+    }
+
+    defaultShader.LoadVertexShader("Sources/Shaders/vertex.glsl");
+    defaultShader.LoadFragmentShader("Sources/Shaders/fragment.glsl");
+    defaultShader.Create();
+    texture.Initialize();
+
+    return true;
+}
 
 void display(GLFWwindow *window)
 {
@@ -28,14 +51,14 @@ void display(GLFWwindow *window)
     glClearColor(0.5f, 0.5f, 0.5f, 1.f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    GLuint program = defaultShader->GetProgram();
+    GLuint program = defaultShader.GetProgram();
     glUseProgram(program);
 
-    float znear = 0.1f, zfar = 1000.0f, fov = 45.0f;
-    camera->Matrix(fov, znear, zfar, defaultShader, "projection");
+    float zNear = 0.1f, zFar = 1000.0f, fov = 45.0f;
+    camera.Matrix(fov, zNear, zFar, &defaultShader, "u_projection");
 
-    int attribLocation = glGetAttribLocation(program, "position");
-    glEnableVertexAttribArray(attribLocation);
+    int positionLocation = glGetAttribLocation(program, "a_position");
+    glEnableVertexAttribArray(positionLocation);
 
     GLuint VBO, EBO;
     glGenBuffers(1, &VBO);
@@ -46,8 +69,7 @@ void display(GLFWwindow *window)
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(attribLocation, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (void *)0);
-    glEnableVertexAttribArray(attribLocation);
+    glVertexAttribPointer(positionLocation, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (void *)0);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     glDisableVertexAttribArray(0);
 
@@ -57,33 +79,13 @@ void display(GLFWwindow *window)
 
 int main()
 {
-    Window *mainWindow = new Window();
-
-    try
-    {
-        mainWindow->Initialize(680, 460, "Complete Scene");
-    }
-    catch (const runtime_error &e)
-    {
-        cerr << e.what() << '\n';
+    if (!Initialize())
         return -1;
-    }
 
-    GLFWwindow *window = mainWindow->GetHandle();
-
-#ifdef _DEBUG
-    defaultShader->LoadVertexShader("Sources/Shaders/vertex.glsl");
-    defaultShader->LoadFragmentShader("Sources/Shaders/fragment.glsl");
-    defaultShader->Create();
-#else
-    defaultShader->LoadVertexShader("vertex.glsl");
-    defaultShader->LoadFragmentShader("fragment.glsl");
-    defaultShader->Create();
-#endif
-
+    GLFWwindow *window = mainWindow.GetHandle();
     while (!glfwWindowShouldClose(window))
     {
-        camera->Inputs(window);
+        camera.Inputs(window);
         display(window);
         glfwSwapBuffers(window);
         glfwPollEvents();

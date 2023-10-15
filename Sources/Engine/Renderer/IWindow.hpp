@@ -6,14 +6,14 @@
 class IWindow
 {
 protected:
-    unsigned int width;
-    unsigned int height;
     const char *name;
+    unsigned int height;
+    unsigned int width;
     GLFWwindow *window = nullptr;
 
 public:
     virtual ~IWindow() = default;
-    virtual void Initialize(unsigned int, unsigned int, const char *) = 0;
+    virtual void Initialize(unsigned int width, unsigned int height, const char *name) = 0;
     virtual void Release() = 0;
-    GLFWwindow *GetHandle();
+    GLFWwindow *GetHandle() const;
 };

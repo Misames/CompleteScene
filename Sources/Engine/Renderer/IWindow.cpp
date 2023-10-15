@@ -1,6 +1,6 @@
 #include "IWindow.hpp"
 
-GLFWwindow *IWindow::GetHandle()
+GLFWwindow *IWindow::GetHandle() const
 {
     return window;
 }
