@@ -45,6 +45,21 @@
     <ClCompile Include="Sources\Engine\Renderer\Window.cpp">
       <Filter>Fichiers sources\Engine\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Engine\Renderer\IRenderer.cpp">
+      <Filter>Fichiers sources\Engine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Renderer\IRenderingEngine.cpp">
+      <Filter>Fichiers sources\Engine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Renderer\RasterizationEngine.cpp">
+      <Filter>Fichiers sources\Engine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Renderer\Renderer.cpp">
+      <Filter>Fichiers sources\Engine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Engine.cpp">
+      <Filter>Fichiers sources\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\GLFW\glfw3.h">
@@ -76,6 +91,24 @@
     </ClInclude>
     <ClInclude Include="Sources\Engine\Renderer\Window.hpp">
       <Filter>Fichiers sources\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Renderer\IRenderer.hpp">
+      <Filter>Fichiers sources\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Renderer\IRenderingEngine.hpp">
+      <Filter>Fichiers sources\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Renderer\RasterizationEngine.hpp">
+      <Filter>Fichiers sources\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Renderer\Renderer.hpp">
+      <Filter>Fichiers sources\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Core\Vertex.hpp">
+      <Filter>Fichiers sources\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Engine.hpp">
+      <Filter>Fichiers sources\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

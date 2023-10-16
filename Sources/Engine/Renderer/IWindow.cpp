@@ -2,5 +2,5 @@
 
 GLFWwindow *IWindow::GetHandle() const
 {
-    return window;
+    return glfwWindow;
 }

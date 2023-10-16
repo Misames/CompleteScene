@@ -160,7 +160,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Engine\Core\Camera.cpp" />
+    <ClCompile Include="Sources\Engine\Engine.cpp" />
+    <ClCompile Include="Sources\Engine\Renderer\IRenderer.cpp" />
+    <ClCompile Include="Sources\Engine\Renderer\IRenderingEngine.cpp" />
     <ClCompile Include="Sources\Engine\Renderer\IWindow.cpp" />
+    <ClCompile Include="Sources\Engine\Renderer\RasterizationEngine.cpp" />
+    <ClCompile Include="Sources\Engine\Renderer\Renderer.cpp" />
     <ClCompile Include="Sources\Engine\Renderer\Window.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\Tools\GLShader.cpp" />
@@ -173,7 +178,13 @@
     <ClInclude Include="Includes\GL\glxew.h" />
     <ClInclude Include="Includes\GL\wglew.h" />
     <ClInclude Include="Sources\Engine\Core\Camera.hpp" />
+    <ClInclude Include="Sources\Engine\Core\Vertex.hpp" />
+    <ClInclude Include="Sources\Engine\Engine.hpp" />
+    <ClInclude Include="Sources\Engine\Renderer\IRenderer.hpp" />
+    <ClInclude Include="Sources\Engine\Renderer\IRenderingEngine.hpp" />
     <ClInclude Include="Sources\Engine\Renderer\IWindow.hpp" />
+    <ClInclude Include="Sources\Engine\Renderer\RasterizationEngine.hpp" />
+    <ClInclude Include="Sources\Engine\Renderer\Renderer.hpp" />
     <ClInclude Include="Sources\Engine\Renderer\Window.hpp" />
     <ClInclude Include="Sources\Tools\GLShader.hpp" />
   </ItemGroup>

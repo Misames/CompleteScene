@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "Window.hpp"
 
 using namespace std;
@@ -15,41 +14,49 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods
         glfwSetWindowShouldClose(window, GLFW_TRUE);
 }
 
-Window::Window()
-{
-    cout << "Init Window" << endl;
-}
-
 Window::~Window()
 {
     Release();
-    cout << "Destroy Window" << endl;
 }
 
-void Window::Initialize(unsigned int width, unsigned int heught, const char *name)
+void Window::Initialize(const WindowInfo &windowInfo)
 {
+    if (initialized)
+        Release();
+
     glfwSetErrorCallback(errorCallback);
 
     if (!glfwInit())
         throw runtime_error("Fail to initialize GLFW");
 
-    window = glfwCreateWindow(width, heught, name, nullptr, nullptr);
-    if (!window)
+    glfwWindow = glfwCreateWindow(windowInfo.width,
+                                  windowInfo.height,
+                                  windowInfo.title,
+                                  nullptr, nullptr);
+    if (!glfwWindow)
     {
         glfwTerminate();
         throw runtime_error("Fail to create window");
     }
 
-    glfwMakeContextCurrent(window);
-    glfwSetKeyCallback(window, keyCallback);
+    glfwMakeContextCurrent(glfwWindow);
+    glfwSetKeyCallback(glfwWindow, keyCallback);
 
     GLenum error = glewInit();
     if (error != GLEW_OK)
         cout << "GLEW initialization failled!" << endl;
+
+    initialized = true;
+    cout << "Window initialize" << endl;
 }
 
 void Window::Release()
 {
-    glfwTerminate();
-    window = nullptr;
+    if (initialized)
+    {
+        glfwTerminate();
+        glfwWindow = nullptr;
+        initialized = false;
+        cout << "Window release" << endl;
+    }
 }

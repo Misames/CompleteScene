@@ -5,8 +5,7 @@
 class Window : public IWindow
 {
 public:
-    Window();
     ~Window() override;
-    void Initialize(unsigned int width, unsigned int height, const char *name) final;
+    void Initialize(const WindowInfo &windowInfo) final;
     void Release() final;
 };

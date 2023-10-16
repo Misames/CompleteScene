@@ -14,6 +14,7 @@
                 "-g",
                 "Sources\\*.cpp",
                 "Sources\\Tools\\*.cpp",
+                "Sources\\Engine\\*.cpp",
                 "Sources\\Engine\\Core\\*.cpp",
                 "Sources\\Engine\\Renderer\\*.cpp",
                 "-lopengl32",

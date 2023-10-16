@@ -3,17 +3,22 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+struct WindowInfo
+{
+    unsigned int width;
+    unsigned int height;
+    const char *title;
+};
+
 class IWindow
 {
 protected:
-    const char *name;
-    unsigned int height;
-    unsigned int width;
-    GLFWwindow *window = nullptr;
+    bool initialized = false;
+    GLFWwindow *glfwWindow = nullptr;
 
 public:
     virtual ~IWindow() = default;
-    virtual void Initialize(unsigned int width, unsigned int height, const char *name) = 0;
+    virtual void Initialize(const WindowInfo &windowInfo) = 0;
     virtual void Release() = 0;
     GLFWwindow *GetHandle() const;
 };
