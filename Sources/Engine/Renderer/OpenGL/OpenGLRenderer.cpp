@@ -1,29 +1,29 @@
 #include <iostream>
-#include "Renderer.hpp"
+#include "OpenGLRenderer.hpp"
 
 using namespace std;
 
-Renderer::~Renderer()
+OpenGLRenderer::~OpenGLRenderer()
 {
     Release();
 }
 
-void Renderer::Initialize(const RendererInfo &renderInfo)
+void OpenGLRenderer::Initialize(const RendererInfo &renderInfo)
 {
     if (initialized)
         Release();
 
-    m_window.Initialize(*renderInfo.windowInfo);
-    window = &m_window;
+    openglWindow.Initialize(*renderInfo.windowInfo);
+    window = &openglWindow;
     initialized = true;
     cout << "Renderer initialize" << endl;
 }
 
-void Renderer::Release()
+void OpenGLRenderer::Release()
 {
     if (initialized)
     {
-        m_window.Release();
+        openglWindow.Release();
         window = nullptr;
         initialized = false;
         cout << "Renderer release" << endl;

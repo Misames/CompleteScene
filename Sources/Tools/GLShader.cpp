@@ -6,13 +6,13 @@ using namespace std;
 
 GLShader::GLShader() : program(0), vertexShader(0), geometryShader(0), fragmentShader(0)
 {
-    cout << "Init shader" << endl;
+    cout << "Shader initialize" << endl;
 }
 
 GLShader::~GLShader()
 {
-    Destroy();
-    cout << "Destroy shader" << endl;
+    Release();
+    cout << "Shader release" << endl;
 }
 
 bool ValidateShader(GLuint shader)
@@ -104,7 +104,7 @@ bool GLShader::LoadFragmentShader(const char *filename)
     return ValidateShader(fragmentShader);
 }
 
-bool GLShader::Create()
+bool GLShader::Initialize()
 {
     program = glCreateProgram();
     glAttachShader(program, vertexShader);
@@ -138,7 +138,7 @@ bool GLShader::Create()
     return true;
 }
 
-void GLShader::Destroy()
+void GLShader::Release()
 {
     glDetachShader(program, vertexShader);
     glDetachShader(program, fragmentShader);

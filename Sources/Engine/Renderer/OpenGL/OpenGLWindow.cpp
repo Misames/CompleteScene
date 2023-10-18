@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Window.hpp"
+#include "OpenGLWindow.hpp"
 
 using namespace std;
 
@@ -14,12 +14,12 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods
         glfwSetWindowShouldClose(window, GLFW_TRUE);
 }
 
-Window::~Window()
+OpenGLWindow::~OpenGLWindow()
 {
     Release();
 }
 
-void Window::Initialize(const WindowInfo &windowInfo)
+void OpenGLWindow::Initialize(const WindowInfo &windowInfo)
 {
     if (initialized)
         Release();
@@ -50,7 +50,7 @@ void Window::Initialize(const WindowInfo &windowInfo)
     cout << "Window initialize" << endl;
 }
 
-void Window::Release()
+void OpenGLWindow::Release()
 {
     if (initialized)
     {

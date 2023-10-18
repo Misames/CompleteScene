@@ -159,14 +159,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\Engine\Core\Camera.cpp" />
+    <ClCompile Include="Sources\Engine\Components\Camera.cpp" />
     <ClCompile Include="Sources\Engine\Engine.cpp" />
     <ClCompile Include="Sources\Engine\Renderer\IRenderer.cpp" />
     <ClCompile Include="Sources\Engine\Renderer\IRenderingEngine.cpp" />
     <ClCompile Include="Sources\Engine\Renderer\IWindow.cpp" />
+    <ClCompile Include="Sources\Engine\Renderer\OpenGL\OpenGLCore.cpp" />
+    <ClCompile Include="Sources\Engine\Renderer\OpenGL\OpenGLRenderer.cpp" />
+    <ClCompile Include="Sources\Engine\Renderer\OpenGL\OpenGLWindow.cpp" />
     <ClCompile Include="Sources\Engine\Renderer\RasterizationEngine.cpp" />
-    <ClCompile Include="Sources\Engine\Renderer\Renderer.cpp" />
-    <ClCompile Include="Sources\Engine\Renderer\Window.cpp" />
+    <ClCompile Include="Sources\Engine\Renderer\Texture.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\Tools\GLShader.cpp" />
   </ItemGroup>
@@ -177,16 +179,19 @@
     <ClInclude Include="Includes\GL\glew.h" />
     <ClInclude Include="Includes\GL\glxew.h" />
     <ClInclude Include="Includes\GL\wglew.h" />
-    <ClInclude Include="Sources\Engine\Core\Camera.hpp" />
-    <ClInclude Include="Sources\Engine\Core\Vertex.hpp" />
+    <ClInclude Include="Sources\Engine\Components\Camera.hpp" />
     <ClInclude Include="Sources\Engine\Engine.hpp" />
     <ClInclude Include="Sources\Engine\Renderer\IRenderer.hpp" />
     <ClInclude Include="Sources\Engine\Renderer\IRenderingEngine.hpp" />
     <ClInclude Include="Sources\Engine\Renderer\IWindow.hpp" />
+    <ClInclude Include="Sources\Engine\Renderer\OpenGL\OpenGLCore.hpp" />
+    <ClInclude Include="Sources\Engine\Renderer\OpenGL\OpenGLRenderer.hpp" />
+    <ClInclude Include="Sources\Engine\Renderer\OpenGL\OpenGLWindow.hpp" />
     <ClInclude Include="Sources\Engine\Renderer\RasterizationEngine.hpp" />
-    <ClInclude Include="Sources\Engine\Renderer\Renderer.hpp" />
-    <ClInclude Include="Sources\Engine\Renderer\Window.hpp" />
+    <ClInclude Include="Sources\Engine\Renderer\Texture.hpp" />
+    <ClInclude Include="Sources\Engine\Renderer\Vertex.hpp" />
     <ClInclude Include="Sources\Tools\GLShader.hpp" />
+    <ClInclude Include="Sources\Tools\Utils.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Sources\Shaders\fragment.glsl" />

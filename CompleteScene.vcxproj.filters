@@ -22,11 +22,14 @@
     <Filter Include="Fichiers sources\Engine">
       <UniqueIdentifier>{45796333-7640-46c5-be18-0f6ad1929c64}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Engine\Core">
-      <UniqueIdentifier>{2c811fab-8ecf-40d9-a414-bdd5112a04a0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers sources\Engine\Renderer">
       <UniqueIdentifier>{f25f9acc-3d70-4acb-847d-322a15e239f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Engine\Renderer\OpenGL">
+      <UniqueIdentifier>{e525ace9-c49e-4781-bccb-93b5b9b56edf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Engine\Components">
+      <UniqueIdentifier>{78fd9ac3-9077-48f6-b726-10fc02230e25}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -36,13 +39,7 @@
     <ClCompile Include="Sources\Tools\GLShader.cpp">
       <Filter>Fichiers sources\Tools</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Engine\Core\Camera.cpp">
-      <Filter>Fichiers sources\Engine\Core</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\Engine\Renderer\IWindow.cpp">
-      <Filter>Fichiers sources\Engine\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Engine\Renderer\Window.cpp">
       <Filter>Fichiers sources\Engine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Engine\Renderer\IRenderer.cpp">
@@ -54,11 +51,23 @@
     <ClCompile Include="Sources\Engine\Renderer\RasterizationEngine.cpp">
       <Filter>Fichiers sources\Engine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Engine\Renderer\Renderer.cpp">
-      <Filter>Fichiers sources\Engine\Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\Engine\Engine.cpp">
       <Filter>Fichiers sources\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Renderer\OpenGL\OpenGLCore.cpp">
+      <Filter>Fichiers sources\Engine\Renderer\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Renderer\OpenGL\OpenGLRenderer.cpp">
+      <Filter>Fichiers sources\Engine\Renderer\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Renderer\OpenGL\OpenGLWindow.cpp">
+      <Filter>Fichiers sources\Engine\Renderer\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Components\Camera.cpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Renderer\Texture.cpp">
+      <Filter>Fichiers sources\Engine\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -83,13 +92,7 @@
     <ClInclude Include="Sources\Tools\GLShader.hpp">
       <Filter>Fichiers sources\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Engine\Core\Camera.hpp">
-      <Filter>Fichiers sources\Engine\Core</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\Engine\Renderer\IWindow.hpp">
-      <Filter>Fichiers sources\Engine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Engine\Renderer\Window.hpp">
       <Filter>Fichiers sources\Engine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Engine\Renderer\IRenderer.hpp">
@@ -101,14 +104,29 @@
     <ClInclude Include="Sources\Engine\Renderer\RasterizationEngine.hpp">
       <Filter>Fichiers sources\Engine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Engine\Renderer\Renderer.hpp">
-      <Filter>Fichiers sources\Engine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Engine\Core\Vertex.hpp">
-      <Filter>Fichiers sources\Engine\Core</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\Engine\Engine.hpp">
       <Filter>Fichiers sources\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Renderer\OpenGL\OpenGLCore.hpp">
+      <Filter>Fichiers sources\Engine\Renderer\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Renderer\OpenGL\OpenGLRenderer.hpp">
+      <Filter>Fichiers sources\Engine\Renderer\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Renderer\OpenGL\OpenGLWindow.hpp">
+      <Filter>Fichiers sources\Engine\Renderer\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\Camera.hpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Tools\Utils.hpp">
+      <Filter>Fichiers sources\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Renderer\Texture.hpp">
+      <Filter>Fichiers sources\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Renderer\Vertex.hpp">
+      <Filter>Fichiers sources\Engine\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "Camera.hpp"
 
 Camera::Camera(int width, int height, vec3 position)
@@ -7,12 +6,12 @@ Camera::Camera(int width, int height, vec3 position)
     this->width = width;
     this->height = height;
     this->position = position;
-    std::cout << "Init Camera" << std::endl;
+    cout << "Camera initialize" << endl;
 }
 
 Camera::~Camera()
 {
-    std::cout << "Destroy Camera" << std::endl;
+    cout << "Camera release" << endl;
 }
 
 void Camera::Matrix(float FOVdeg, float nearPlane, float farPlane, GLShader *shader, const char *uniform)

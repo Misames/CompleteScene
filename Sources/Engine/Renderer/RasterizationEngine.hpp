@@ -3,8 +3,8 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "IRenderingEngine.hpp"
+#include "../Components/Camera.hpp"
 #include "../../Tools/GLShader.hpp"
-#include "../../Engine/Core/Camera.hpp"
 
 class RasterizationEngine : public IRenderingEngine
 {

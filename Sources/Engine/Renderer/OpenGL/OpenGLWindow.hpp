@@ -1,11 +1,11 @@
 #pragma once
 
-#include "IWindow.hpp"
+#include "../IWindow.hpp"
 
-class Window : public IWindow
+class OpenGLWindow : public IWindow
 {
 public:
-    ~Window() override;
+    ~OpenGLWindow() override;
     void Initialize(const WindowInfo &windowInfo) final;
     void Release() final;
 };

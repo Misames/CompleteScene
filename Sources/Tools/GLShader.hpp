@@ -17,6 +17,6 @@ public:
     bool LoadVertexShader(const char *filename);
     bool LoadGeometryShader(const char *filename);
     bool LoadFragmentShader(const char *filename);
-    bool Create();
-    void Destroy();
+    bool Initialize();
+    void Release();
 };

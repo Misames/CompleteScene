@@ -1,6 +1,6 @@
 #include <iostream>
 #include "RasterizationEngine.hpp"
-#include "Renderer.hpp"
+#include "OpenGL/OpenGLRenderer.hpp"
 
 using namespace std;
 
@@ -17,7 +17,7 @@ void RasterizationEngine::Initialize(const RenderingEngineInfo &renderingEngineI
     switch (renderingEngineInfo.rendererInfo->rendererType)
     {
     case OPENGL:
-        renderer = new Renderer();
+        renderer = new OpenGLRenderer();
         break;
     case VULKAN:
         throw runtime_error("Vulkan renderer not implemented");
@@ -36,11 +36,11 @@ void RasterizationEngine::Initialize(const RenderingEngineInfo &renderingEngineI
 #ifdef _DEBUG
     shader.LoadVertexShader("Sources/Shaders/vertex.glsl");
     shader.LoadFragmentShader("Sources/Shaders/fragment.glsl");
-    shader.Create();
+    shader.Initialize();
 #else
     shader.LoadVertexShader("vertex.glsl");
     shader.LoadFragmentShader("fragment.glsl");
-    shader.Create();
+    shader.Initialize();
 #endif
 
     // Apply Pink Texture
@@ -118,8 +118,8 @@ void RasterizationEngine::Draw(GLFWwindow *window)
 
 void RasterizationEngine::GenerateTexture() const
 {
-    unsigned int textureId;
-    unsigned char *data = new unsigned char[4]{255, 0, 255, 255};
+    GLuint textureId;
+    uint8_t *data = new uint8_t[4]{255, 0, 255, 255};
 
     glGenTextures(1, &textureId);
     glBindTexture(GL_TEXTURE_2D, textureId);

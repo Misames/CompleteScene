@@ -18,7 +18,7 @@ int main()
     renderingEngineInfo.renderingEngineType = RenderingEngineType::RASTERIZATION;
     renderingEngineInfo.rendererInfo = &rendererinfo;
 
-    EngineInfo engineInfo;
+    EngineInfo engineInfo{};
     engineInfo.renderingEngineInfo = &renderingEngineInfo;
 
     Engine engine;
@@ -30,11 +30,11 @@ int main()
     }
     catch (const runtime_error &e)
     {
-        std::cerr << e.what() << endl;
+        cerr << e.what() << endl;
     }
     catch (const bad_alloc &e)
     {
-        std::cerr << e.what() << endl;
+        cerr << e.what() << endl;
     }
 
     return 0;
