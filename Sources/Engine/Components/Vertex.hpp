@@ -9,7 +9,6 @@ struct Vertex
     vec3 position;
     vec3 normal;
     vec2 uv;
-    uint8_t color[4];
 
     static constexpr float EPSILON = 0.001f;
 

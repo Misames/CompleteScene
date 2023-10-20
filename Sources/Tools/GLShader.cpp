@@ -23,16 +23,13 @@ bool ValidateShader(GLuint shader)
     if (!compiled)
     {
         GLint infoLen = 0;
-
         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
 
         if (infoLen > 1)
         {
             char *infoLog = new char[1 + infoLen];
-
             glGetShaderInfoLog(shader, infoLen, NULL, infoLog);
             cout << "Error compiling shader: " << infoLog << endl;
-
             delete[] infoLog;
         }
 
@@ -123,10 +120,8 @@ bool GLShader::Initialize()
         if (infoLen > 1)
         {
             char *infoLog = new char[infoLen + 1];
-
             glGetProgramInfoLog(program, infoLen, NULL, infoLog);
             cout << "Error linkage shader: " << infoLog << endl;
-
             delete (infoLog);
         }
 

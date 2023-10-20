@@ -6,8 +6,8 @@ struct ReverseWrapper
     V &vec;
     ReverseWrapper(V &v) : vec(v) {}
 
-    typename V::ReverseIterator begin() { return vec.rbegin(); }
-    typename V::ReverseIterator end() { return vec.rend(); }
+    typename V::reverse_iterator begin() { return vec.rbegin(); }
+    typename V::reverse_iterator end() { return vec.rend(); }
 };
 
 template <typename T>
