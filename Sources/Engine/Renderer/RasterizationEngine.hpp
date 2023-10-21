@@ -8,13 +8,16 @@
 #include "../Components/Mesh.hpp"
 #include "../../Tools/GLShader.hpp"
 
+using namespace glm;
+
 class RasterizationEngine : public IRenderingEngine
 {
 private:
-    Mesh *mesh;
-    Texture *text;
+    Mesh mesh;
+    Texture text;
     GLShader shader;
-    Camera camera = Camera(640, 480, glm::vec3(0.0f, 0.0f, 2.0f));
+    Camera camera = Camera(640, 480, vec3(0.0f, 0.0f, 2.0f));
+    GLuint VAO, VBO;
 
 public:
     ~RasterizationEngine() override;

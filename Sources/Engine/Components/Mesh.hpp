@@ -1,16 +1,17 @@
 #pragma once
 
 #include <vector>
+#include <stdint.h>
+#include "Vertex.hpp"
 
 using namespace std;
 
 struct Mesh
 {
-    vector<float> vertex;
-    uint32_t indexVertex = 0;
+    uint32_t indexVertex;
+    vector<Vertex> vertexs;
 
     Mesh();
     ~Mesh();
     bool LoadMesh(const char *path);
-    vector<float> GetVertices() const;
 };

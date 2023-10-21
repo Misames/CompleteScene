@@ -9,6 +9,7 @@ struct Vertex
     vec3 position;
     vec3 normal;
     vec2 uv;
+    vec4 tangent;
 
     static constexpr float EPSILON = 0.001f;
 

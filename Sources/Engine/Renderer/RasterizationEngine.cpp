@@ -31,10 +31,20 @@ void RasterizationEngine::Initialize(const RenderingEngineInfo &renderingEngineI
         throw bad_alloc();
 
     renderer->Initialize(*renderingEngineInfo.rendererInfo);
+
+    // Init Buffers
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+    glBindVertexArray(VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+
+    // Init Texture Manager
     Texture::SetupManager();
-    text = new Texture();
-    mesh = new Mesh();
-    mesh->LoadMesh("Sources/Assets/Mesh/lightning_obj.obj");
+    text = Texture();
+
+    // Init Mesh
+    mesh = Mesh();
+    mesh.LoadMesh("Sources/Assets/Mesh/lightning_obj.obj");
 
 #ifdef _DEBUG
     shader.LoadVertexShader("Sources/Shaders/vertex.glsl");
@@ -57,8 +67,10 @@ void RasterizationEngine::Release()
         if (renderer)
         {
             renderer->Release();
-            delete renderer, mesh, text;
-            renderer, mesh, text = nullptr;
+            delete renderer;
+            renderer = nullptr;
+            glDeleteBuffers(1, &VAO);
+            glDeleteBuffers(1, &VBO);
         }
 
         initialized = false;
@@ -88,7 +100,9 @@ void RasterizationEngine::Draw(GLFWwindow *window)
     float zNear = 0.1f, zFar = 1000.0f, fov = 45.0f;
     camera.Matrix(fov, zNear, zFar, &shader, "u_projection");
 
-    const GLuint STRIDE = sizeof(float) * 8;
+    constexpr int STRIDE = sizeof(Vertex);
+    glBufferData(GL_ARRAY_BUFFER, STRIDE * mesh.vertexs.size(), mesh.vertexs.data(), GL_STATIC_DRAW);
+
     GLint positionLocation = glGetAttribLocation(program, "a_position");
     GLint texCoordLocation = glGetAttribLocation(program, "a_texcoords");
     GLint normalLocation = glGetAttribLocation(program, "a_normal");
@@ -97,31 +111,13 @@ void RasterizationEngine::Draw(GLFWwindow *window)
     glEnableVertexAttribArray(texCoordLocation);
     glEnableVertexAttribArray(normalLocation);
 
-    glVertexAttribPointer(positionLocation, 3, GL_FLOAT, GL_FALSE, STRIDE, &mesh->vertex[0]);
-    glVertexAttribPointer(texCoordLocation, 2, GL_FLOAT, GL_FALSE, STRIDE, &mesh->vertex[3]);
-    glVertexAttribPointer(normalLocation, 3, GL_FLOAT, GL_FALSE, STRIDE, &mesh->vertex[5]);
+    glVertexAttribPointer(positionLocation, 3, GL_FLOAT, GL_FALSE, STRIDE, (void *)offsetof(Vertex, position));
+    glVertexAttribPointer(texCoordLocation, 2, GL_FLOAT, GL_FALSE, STRIDE, (void *)offsetof(Vertex, uv));
+    glVertexAttribPointer(normalLocation, 3, GL_FLOAT, GL_FALSE, STRIDE, (void *)offsetof(Vertex, normal));
 
-    glDrawArrays(GL_TRIANGLES, 0, mesh->indexVertex);
+    glDrawArrays(GL_TRIANGLES, 0, mesh.vertexs.size());
 
     glDisableVertexAttribArray(positionLocation);
     glDisableVertexAttribArray(texCoordLocation);
     glDisableVertexAttribArray(normalLocation);
-
-    //--------------------------------------------------------------------------------------------------
-    // GLuint VBO, EBO;
-    // glGenBuffers(1, &VBO);
-    // glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    // glBufferData(GL_ARRAY_BUFFER, sizeof(listData), listData, GL_STATIC_DRAW);
-    //
-    // glGenBuffers(1, &EBO);
-    // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    // glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-    //
-    // glVertexAttribPointer(positionLocation, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (void *)0);
-    // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-    // glDisableVertexAttribArray(0);
-    //
-    // glDeleteBuffers(1, &VBO);
-    // glDeleteBuffers(1, &EBO);
-    //--------------------------------------------------------------------------------------------------
 }
