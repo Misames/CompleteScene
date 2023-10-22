@@ -4,15 +4,11 @@
 
 using namespace std;
 
-GLShader::GLShader() : program(0), vertexShader(0), geometryShader(0), fragmentShader(0)
-{
-    cout << "Shader initialize" << endl;
-}
+GLShader::GLShader() : program(0), vertexShader(0), geometryShader(0), fragmentShader(0) {}
 
 GLShader::~GLShader()
 {
     Release();
-    cout << "Shader release" << endl;
 }
 
 bool ValidateShader(GLuint shader)
@@ -130,6 +126,7 @@ bool GLShader::Initialize()
         return false;
     }
 
+    cout << "Shader initialize" << endl;
     return true;
 }
 
@@ -142,4 +139,6 @@ void GLShader::Release()
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
     glDeleteProgram(program);
+
+    cout << "Shader release" << endl;
 }

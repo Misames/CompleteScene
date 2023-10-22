@@ -69,6 +69,24 @@
     <ClCompile Include="Sources\Engine\Renderer\Texture.cpp">
       <Filter>Fichiers sources\Engine\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Engine\Components\Mesh.cpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Components\Object.cpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Components\Scene.cpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Components\Transform.cpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Components\IComponent.cpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Components\IEntity.cpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\GLFW\glfw3.h">
@@ -127,6 +145,33 @@
     </ClInclude>
     <ClInclude Include="Sources\Engine\Renderer\Vertex.hpp">
       <Filter>Fichiers sources\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\Mesh.hpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\Object.hpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\Scene.hpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\Transform.hpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\Vertex.hpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\tiny_obj_loader.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\stb\stb_image.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\IComponent.hpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\IEntity.hpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

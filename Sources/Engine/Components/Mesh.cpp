@@ -1,31 +1,50 @@
 #define TINYOBJLOADER_IMPLEMENTATION
-#include <tiny_obj_loader.hpp>
 
 #include <iostream>
 #include "Mesh.hpp"
 
-using namespace tinyobj;
-
-Mesh::Mesh()
+Mesh::~Mesh()
 {
+    Release();
+}
+
+void Mesh::Initialize()
+{
+    if (initialized)
+        Release();
+
     vertexs = vector<Vertex>();
     indexVertex = 0;
+
+    LoadMesh("Sources/Assets/Mesh/cube.obj");
+
+    initialized = true;
     cout << "Mesh initialize" << endl;
 }
 
-Mesh::~Mesh()
+void Mesh::Release()
 {
-    cout << "Mesh release" << endl;
+    if (initialized)
+    {
+        initialized = false;
+        cout << "Mesh release" << endl;
+    }
 }
 
-bool Mesh::LoadMesh(const char *path)
+void Mesh::Update() {}
+
+bool Mesh::LoadMesh(const char *meshPath)
 {
     string warm, err;
-    attrib_t attribs;
-    vector<shape_t> shapes;
-    vector<material_t> materials;
+    string mtlPath = meshPath;
 
-    bool ret = LoadObj(&attribs, &shapes, &materials, &warm, &err, path, "", true, false);
+    size_t off = mtlPath.rfind("/");
+    if (off != string::npos)
+        mtlPath.resize(off);
+    else
+        mtlPath = meshPath;
+
+    bool ret = LoadObj(&attribs, &shapes, &materials, &warm, &err, meshPath, mtlPath.c_str(), true, false);
     if (!ret)
     {
         cout << "Mesh not load" << endl;
@@ -38,10 +57,10 @@ bool Mesh::LoadMesh(const char *path)
         Vertex currentVertex;
         uint32_t indexOffset = 0;
 
-        uint32_t fvSize = shape.mesh.num_face_vertices.size();
+        size_t fvSize = shape.mesh.num_face_vertices.size();
         for (uint32_t i = 0; i < fvSize; ++i)
         {
-            uint32_t fv = shape.mesh.num_face_vertices[i];
+            uint8_t fv = shape.mesh.num_face_vertices[i];
             for (uint32_t j = 0; j < fv; ++j)
             {
                 index_t idx = shape.mesh.indices[indexOffset + j];
