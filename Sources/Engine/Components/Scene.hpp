@@ -15,8 +15,8 @@ private:
     bool initialized = false;
     const char *name = "SampleScene";
     float zNear = 0.1f, zFar = 1000.0f, fov = 45.0f;
-    Camera *camera;
-    Object *obj;
+    Camera *camera = nullptr;
+    vector<Object *> lstObj;
 
 public:
     ~Scene();

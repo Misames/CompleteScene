@@ -16,8 +16,6 @@ void Mesh::Initialize()
     vertexs = vector<Vertex>();
     indexVertex = 0;
 
-    LoadMesh("Sources/Assets/Mesh/cube.obj");
-
     initialized = true;
     cout << "Mesh initialize" << endl;
 }

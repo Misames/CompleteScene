@@ -10,11 +10,12 @@ class IComponent;
 class IEntity
 {
 protected:
+    bool initialized = false;
     uint64_t id;
-    bool initialized, enabled = false;
     vector<IComponent *> components;
 
 public:
+    bool enabled = false;
     virtual ~IEntity() = default;
     virtual void Initialize() = 0;
     virtual void Release() = 0;

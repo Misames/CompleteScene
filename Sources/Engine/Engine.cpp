@@ -13,7 +13,7 @@ Engine::~Engine()
 
 void Engine::Initialize(const EngineInfo &info)
 {
-    if (initialize)
+    if (initialized)
         Release();
 
     switch (info.renderingEngineInfo->renderingEngineType)
@@ -33,13 +33,13 @@ void Engine::Initialize(const EngineInfo &info)
         throw bad_alloc();
 
     renderingEngine->Initialize(*info.renderingEngineInfo);
-    initialize = true;
+    initialized = true;
     cout << "Engine initialize" << endl;
 }
 
 void Engine::Release()
 {
-    if (initialize)
+    if (initialized)
     {
         if (renderingEngine)
         {
@@ -48,14 +48,14 @@ void Engine::Release()
             renderingEngine = nullptr;
         }
 
-        initialize = false;
+        initialized = false;
         cout << "Engine release" << endl;
     }
 }
 
 void Engine::Run()
 {
-    if (!initialize)
+    if (!initialized)
         throw runtime_error("Engine not initialize");
 
     GLFWwindow *glfwWindow = renderingEngine->GetRenderer()->GetWindow()->GetHandle();

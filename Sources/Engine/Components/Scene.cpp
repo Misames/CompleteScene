@@ -15,11 +15,21 @@ void Scene::Initialize()
     if (!camera)
         throw bad_alloc();
 
-    obj = new Object();
+    Object *obj = new Object();
     if (!obj)
         throw bad_alloc();
 
     obj->Initialize();
+    obj->GetMesh()->LoadMesh("Sources/Assets/Mesh/lightning_obj.obj");
+    lstObj.push_back(obj);
+
+    Object *obj2 = new Object();
+    if (!obj2)
+        throw bad_alloc();
+
+    obj2->Initialize();
+    obj2->GetMesh()->LoadMesh("Sources/Assets/Mesh/cube.obj");
+    lstObj.push_back(obj2);
 
     initialized = true;
     cout << "Scene initialize" << endl;
@@ -29,9 +39,15 @@ void Scene::Release()
 {
     if (initialized)
     {
-        obj->Release();
-        delete obj, camera;
-        obj, camera = nullptr;
+        for (Object *currentObject : lstObj)
+        {
+            currentObject->Release();
+            delete currentObject;
+            currentObject = nullptr;
+        }
+
+        delete camera;
+        camera = nullptr;
 
         initialized = false;
         cout << "Scene release" << endl;
@@ -48,8 +64,11 @@ void Scene::RenderScene(GLFWwindow *glfwWindow)
     glClearColor(0.5f, 0.5f, 0.5f, 1.f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    camera->Matrix(fov, zNear, zFar, obj->GetShader(), "u_projection");
-    obj->Render();
+    for (Object *currentObject : lstObj)
+    {
+        camera->Matrix(fov, zNear, zFar, currentObject->GetShader(), "u_projection");
+        currentObject->Render();
+    }
 
     glfwSwapBuffers(glfwWindow);
 }

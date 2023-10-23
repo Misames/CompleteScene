@@ -16,7 +16,7 @@ void Object::Release()
         mesh->Release();
         delete shader, mesh;
         shader, mesh = nullptr;
-        initialized = false;
+        initialized, enabled = false;
         cout << "Object release" << endl;
     }
 }
@@ -28,15 +28,13 @@ void Object::Initialize()
 
     // Init Buffers
     glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
     glBindVertexArray(VAO);
+    glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-    shader = new GLShader();
     mesh = new Mesh();
-
     mesh->Initialize();
-
+    shader = new GLShader();
 #ifdef _DEBUG
     shader->LoadVertexShader("Sources/Shaders/vertex.glsl");
     shader->LoadFragmentShader("Sources/Shaders/fragment.glsl");
@@ -47,12 +45,15 @@ void Object::Initialize()
     shader->Initialize();
 #endif
 
-    initialized = true;
+    initialized, enabled = true;
     cout << "Object initialize" << endl;
 }
 
 void Object::Render()
 {
+    if (enabled == false)
+        return;
+
     GLuint program = shader->GetProgram();
     glUseProgram(program);
 
@@ -81,4 +82,9 @@ void Object::Render()
 GLShader *Object::GetShader() const
 {
     return shader;
+}
+
+Mesh *Object::GetMesh() const
+{
+    return mesh;
 }

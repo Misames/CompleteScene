@@ -5,8 +5,8 @@
 class IComponent
 {
 protected:
-    uint64_t id;
     bool initialized, enabled = false;
+    uint64_t id;
     IEntity *entity;
 
 public:

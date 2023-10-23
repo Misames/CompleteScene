@@ -2,9 +2,9 @@
 
 in vec2 v_texcoords;
 
-out vec4 fragColor;
-
 uniform sampler2D u_sampler;
+
+out vec4 fragColor;
 
 void main()
 {

@@ -10,7 +10,7 @@ struct EngineInfo
 class Engine
 {
 private:
-    bool initialize = false;
+    bool initialized = false;
     IRenderingEngine *renderingEngine = nullptr;
 
 public:
