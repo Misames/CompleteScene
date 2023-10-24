@@ -2,7 +2,6 @@
 
 #include <vector>
 #include <stdint.h>
-
 #include "IComponent.hpp"
 
 using namespace std;
@@ -15,6 +14,8 @@ protected:
     vector<IComponent *> components;
 
 public:
+    bool enabled = false;
+
     virtual ~IEntity() = default;
 
     virtual void Initialize() = 0;

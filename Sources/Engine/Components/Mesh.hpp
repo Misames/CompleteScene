@@ -1,9 +1,7 @@
 #pragma once
 
 #include <iostream>
-
 #include <tiny_obj_loader.hpp>
-
 #include "IComponent.hpp"
 #include "Vertex.hpp"
 

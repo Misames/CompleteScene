@@ -1,4 +1,9 @@
+#include <iostream>
+#include "Vertex.hpp"
+
 #include "Object.hpp"
+
+using namespace std;
 
 Object::~Object()
 {

@@ -1,4 +1,9 @@
+#include <fstream>
+#include <iostream>
+
 #include "GLShader.hpp"
+
+using namespace std;
 
 GLShader::GLShader() : program(0), vertexShader(0), geometryShader(0), fragmentShader(0) {}
 

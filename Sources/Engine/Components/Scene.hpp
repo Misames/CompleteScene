@@ -1,11 +1,8 @@
 #pragma once
 
-#include <iostream>
 #include <vector>
-
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-
 #include "Camera.hpp"
 #include "Object.hpp"
 

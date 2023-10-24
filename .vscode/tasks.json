@@ -13,7 +13,6 @@
                 "Libraries\\",
                 "-g",
                 "Sources\\main.cpp",
-                "Sources\\Tools\\*.cpp",
                 "Sources\\Engine\\*.cpp",
                 "Sources\\Engine\\Components\\*.cpp",
                 "Sources\\Engine\\Renderer\\*.cpp",

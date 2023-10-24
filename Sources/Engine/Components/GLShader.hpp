@@ -1,10 +1,6 @@
 #pragma once
 
-#include <fstream>
-#include <iostream>
 #include <GL/glew.h>
-
-using namespace std;
 
 class GLShader
 {

@@ -1,12 +1,8 @@
 #pragma once
 
-#include <iostream>
-
 #include <glm/glm.hpp>
-
 #include "IComponent.hpp"
 
-using namespace std;
 using namespace glm;
 
 class Transform : IComponent

@@ -1,4 +1,8 @@
+#include <iostream>
+
 #include "Transform.hpp"
+
+using namespace std;
 
 Transform::~Transform()
 {

@@ -1,3 +1,5 @@
+#include <GL/glew.h>
+
 #include "OpenGLCore.hpp"
 
 uint32_t CreateBufferObject(BufferType type, const size_t size, const void *data)

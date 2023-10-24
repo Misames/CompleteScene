@@ -1,4 +1,10 @@
+#include <iostream>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 #include "Engine.hpp"
+
+using namespace std;
 
 Engine::~Engine()
 {

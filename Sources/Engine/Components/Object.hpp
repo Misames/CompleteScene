@@ -1,16 +1,11 @@
 #pragma once
 
-#include <iostream>
-
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-
 #include "Mesh.hpp"
 #include "Texture.hpp"
 #include "Transform.hpp"
-#include "../../Tools/GLShader.hpp"
-
-using namespace std;
+#include "GLShader.hpp"
 
 class Object
 {

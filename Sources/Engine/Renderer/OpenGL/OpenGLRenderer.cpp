@@ -1,4 +1,8 @@
+#include <iostream>
+
 #include "OpenGLRenderer.hpp"
+
+using namespace std;
 
 OpenGLRenderer::~OpenGLRenderer()
 {

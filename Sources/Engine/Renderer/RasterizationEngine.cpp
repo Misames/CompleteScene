@@ -1,4 +1,9 @@
+#include <iostream>
+#include "OpenGL/OpenGLRenderer.hpp"
+
 #include "RasterizationEngine.hpp"
+
+using namespace std;
 
 RasterizationEngine::~RasterizationEngine()
 {
