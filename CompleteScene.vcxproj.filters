@@ -66,9 +66,6 @@
     <ClCompile Include="Sources\Engine\Components\Camera.cpp">
       <Filter>Fichiers sources\Engine\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Engine\Renderer\Texture.cpp">
-      <Filter>Fichiers sources\Engine\Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\Engine\Components\Mesh.cpp">
       <Filter>Fichiers sources\Engine\Components</Filter>
     </ClCompile>
@@ -85,6 +82,9 @@
       <Filter>Fichiers sources\Engine\Components</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Engine\Components\IEntity.cpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Components\Texture.cpp">
       <Filter>Fichiers sources\Engine\Components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -140,9 +140,6 @@
     <ClInclude Include="Sources\Tools\Utils.hpp">
       <Filter>Fichiers sources\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Engine\Renderer\Texture.hpp">
-      <Filter>Fichiers sources\Engine\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\Engine\Renderer\Vertex.hpp">
       <Filter>Fichiers sources\Engine\Renderer</Filter>
     </ClInclude>
@@ -171,6 +168,9 @@
       <Filter>Fichiers sources\Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Engine\Components\IEntity.hpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\Texture.hpp">
       <Filter>Fichiers sources\Engine\Components</Filter>
     </ClInclude>
   </ItemGroup>

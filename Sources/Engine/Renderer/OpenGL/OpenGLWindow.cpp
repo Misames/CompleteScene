@@ -1,7 +1,4 @@
-#include <iostream>
 #include "OpenGLWindow.hpp"
-
-using namespace std;
 
 void errorCallback(int error, const char *description)
 {

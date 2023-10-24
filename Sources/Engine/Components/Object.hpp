@@ -1,27 +1,43 @@
 #pragma once
 
+#include <iostream>
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include "IEntity.hpp"
+
 #include "Mesh.hpp"
+#include "Texture.hpp"
 #include "Transform.hpp"
 #include "../../Tools/GLShader.hpp"
 
-class Object : IEntity
+using namespace std;
+
+class Object
 {
 private:
-    Transform *transform = nullptr;
-    Mesh *mesh = nullptr;
+    GLuint VBO;
+    GLuint VAO;
+    GLint positionLocation;
+    GLint normalLocation;
+    GLint texCoordLocation;
+
     GLShader *shader = nullptr;
-    GLuint VBO, VAO;
-    GLint positionLocation, normalLocation, texCoordLocation;
+    Mesh *mesh = nullptr;
+    Transform *transform = nullptr;
+    Texture *texture = nullptr;
 
 public:
-    ~Object() override;
-    void Release() final;
-    void Initialize() final;
+    bool enabled = false;
+    bool initialized = false;
+
+    ~Object();
+
+    void Release();
+    void Initialize();
     void Render();
 
     GLShader *GetShader() const;
     Mesh *GetMesh() const;
+    Transform *GetTransform() const;
+    Texture *GetTexture() const;
 };

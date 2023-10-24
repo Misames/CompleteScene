@@ -1,10 +1,23 @@
 #pragma once
 
+#include <iostream>
+
+#include <glm/glm.hpp>
+
 #include "IComponent.hpp"
 
-struct Transform : IComponent
+using namespace std;
+using namespace glm;
+
+class Transform : IComponent
 {
-    int32_t tx, ty, tz;
-    int32_t rx, ry, rz;
-    int32_t sx, sy, sz;
+public:
+    vec3 position;
+    vec3 rotation;
+    vec3 scale;
+
+    ~Transform() override;
+    void Initialize() final;
+    void Release() final;
+    void Update() final;
 };

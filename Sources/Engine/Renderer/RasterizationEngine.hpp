@@ -1,7 +1,11 @@
 #pragma once
 
+#include <iostream>
 #include "IRenderingEngine.hpp"
+#include "OpenGL/OpenGLRenderer.hpp"
 #include "../Components/Scene.hpp"
+
+using namespace std;
 
 class RasterizationEngine : public IRenderingEngine
 {

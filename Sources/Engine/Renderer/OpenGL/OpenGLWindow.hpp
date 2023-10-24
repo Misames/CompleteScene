@@ -1,6 +1,9 @@
 #pragma once
 
+#include <iostream>
 #include "../IWindow.hpp"
+
+using namespace std;
 
 class OpenGLWindow : public IWindow
 {

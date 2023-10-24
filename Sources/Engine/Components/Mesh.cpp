@@ -1,6 +1,5 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 
-#include <iostream>
 #include "Mesh.hpp"
 
 Mesh::~Mesh()

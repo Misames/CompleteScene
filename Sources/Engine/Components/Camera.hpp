@@ -7,6 +7,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/rotate_vector.hpp>
 #include <glm/gtx/vector_angle.hpp>
+
 #include "../../Tools/GLShader.hpp"
 
 using namespace std;
@@ -23,22 +24,22 @@ private:
     // Prevents the camera from jumping around when first clicking left click
     bool firstClick = true;
 
-    // Stores the width and height of the window
-    int width;
-    int height;
-
+public:
     // Adjust the speed of the camera and it's sensitivity when looking around
     float speed = 0.1f;
     float sensitivity = 100.0f;
 
-public:
+    float near = 0.1f;
+    float far = 1000.0f;
+    float fov = 45.0f;
+
     // Camera constructor to set up initial values
-    Camera(int width, int height, vec3 position);
+    Camera(vec3 position);
     ~Camera();
 
     // Updates and exports the camera matrix to the Vertex Shader
-    void Matrix(float FOVdeg, float nearPlane, float farPlane, GLShader *shader, const char *uniform);
+    void Matrix(int width, int height, GLShader *shader, const char *uniform);
 
     // Handles camera inputs
-    void Inputs(GLFWwindow *window);
+    void Inputs(int width, int height, GLFWwindow *window);
 };

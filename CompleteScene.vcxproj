@@ -169,6 +169,7 @@
     <ClCompile Include="Sources\Engine\Components\Mesh.cpp" />
     <ClCompile Include="Sources\Engine\Components\Object.cpp" />
     <ClCompile Include="Sources\Engine\Components\Scene.cpp" />
+    <ClCompile Include="Sources\Engine\Components\Texture.cpp" />
     <ClCompile Include="Sources\Engine\Components\Transform.cpp" />
     <ClCompile Include="Sources\Engine\Engine.cpp" />
     <ClCompile Include="Sources\Engine\Renderer\IRenderer.cpp" />
@@ -178,7 +179,6 @@
     <ClCompile Include="Sources\Engine\Renderer\OpenGL\OpenGLRenderer.cpp" />
     <ClCompile Include="Sources\Engine\Renderer\OpenGL\OpenGLWindow.cpp" />
     <ClCompile Include="Sources\Engine\Renderer\RasterizationEngine.cpp" />
-    <ClCompile Include="Sources\Engine\Renderer\Texture.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\Tools\GLShader.cpp" />
   </ItemGroup>
@@ -197,6 +197,7 @@
     <ClInclude Include="Sources\Engine\Components\Mesh.hpp" />
     <ClInclude Include="Sources\Engine\Components\Object.hpp" />
     <ClInclude Include="Sources\Engine\Components\Scene.hpp" />
+    <ClInclude Include="Sources\Engine\Components\Texture.hpp" />
     <ClInclude Include="Sources\Engine\Components\Transform.hpp" />
     <ClInclude Include="Sources\Engine\Components\Vertex.hpp" />
     <ClInclude Include="Sources\Engine\Engine.hpp" />
@@ -207,7 +208,6 @@
     <ClInclude Include="Sources\Engine\Renderer\OpenGL\OpenGLRenderer.hpp" />
     <ClInclude Include="Sources\Engine\Renderer\OpenGL\OpenGLWindow.hpp" />
     <ClInclude Include="Sources\Engine\Renderer\RasterizationEngine.hpp" />
-    <ClInclude Include="Sources\Engine\Renderer\Texture.hpp" />
     <ClInclude Include="Sources\Engine\Renderer\Vertex.hpp" />
     <ClInclude Include="Sources\Tools\GLShader.hpp" />
     <ClInclude Include="Sources\Tools\Utils.hpp" />

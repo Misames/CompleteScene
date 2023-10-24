@@ -1,7 +1,10 @@
 #pragma once
 
-#include "../IRenderer.hpp"
+#include <iostream>
 #include "OpenGLWindow.hpp"
+#include "../IRenderer.hpp"
+
+using namespace std;
 
 class OpenGLRenderer : public IRenderer
 {

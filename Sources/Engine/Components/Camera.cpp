@@ -1,10 +1,9 @@
 #include <iostream>
+
 #include "Camera.hpp"
 
-Camera::Camera(int width, int height, vec3 position)
+Camera::Camera(vec3 position)
 {
-    this->width = width;
-    this->height = height;
     this->position = position;
     cout << "Camera initialize" << endl;
 }
@@ -14,7 +13,7 @@ Camera::~Camera()
     cout << "Camera release" << endl;
 }
 
-void Camera::Matrix(float FOVdeg, float nearPlane, float farPlane, GLShader *shader, const char *uniform)
+void Camera::Matrix(int width, int height, GLShader *shader, const char *uniform)
 {
     // Initializes matrices since otherwise they will be the null matrix
     mat4 view = mat4(1.0f);
@@ -24,13 +23,13 @@ void Camera::Matrix(float FOVdeg, float nearPlane, float farPlane, GLShader *sha
     view = lookAt(position, position + orientation, up);
 
     // Adds perspective to the scene
-    projection = perspective(radians(FOVdeg), (float)width / height, nearPlane, farPlane);
+    projection = perspective(radians(fov), (float)width / height, near, far);
 
     // Exports the camera matrix to the Vertex Shader
     glUniformMatrix4fv(glGetUniformLocation(shader->GetProgram(), uniform), 1, GL_FALSE, value_ptr(projection * view));
 }
 
-void Camera::Inputs(GLFWwindow *window)
+void Camera::Inputs(int width, int height, GLFWwindow *window)
 {
     // Handles key inputs
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)

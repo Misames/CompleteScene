@@ -1,6 +1,12 @@
 #pragma once
 
+#include <iostream>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include "Renderer/IRenderingEngine.hpp"
+#include "Renderer/RasterizationEngine.hpp"
+
+using namespace std;
 
 struct EngineInfo
 {

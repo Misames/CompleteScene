@@ -1,8 +1,11 @@
 #pragma once
 
+#include <iostream>
+
 #include <tiny_obj_loader.hpp>
-#include "Vertex.hpp"
+
 #include "IComponent.hpp"
+#include "Vertex.hpp"
 
 using namespace std;
 using namespace tinyobj;
@@ -16,8 +19,10 @@ struct Mesh : IComponent
     vector<material_t> materials;
 
     ~Mesh() override;
+
     void Initialize() final;
     void Release() final;
     void Update() final;
+
     bool LoadMesh(const char *path);
 };

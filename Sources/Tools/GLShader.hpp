@@ -1,6 +1,10 @@
 #pragma once
 
+#include <fstream>
+#include <iostream>
 #include <GL/glew.h>
+
+using namespace std;
 
 class GLShader
 {
@@ -9,6 +13,7 @@ private:
     GLuint vertexShader;
     GLuint geometryShader;
     GLuint fragmentShader;
+    bool initialized = false;
 
 public:
     GLShader();

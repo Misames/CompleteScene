@@ -1,8 +1,4 @@
-#include <fstream>
-#include <iostream>
 #include "GLShader.hpp"
-
-using namespace std;
 
 GLShader::GLShader() : program(0), vertexShader(0), geometryShader(0), fragmentShader(0) {}
 
@@ -99,6 +95,9 @@ bool GLShader::LoadFragmentShader(const char *filename)
 
 bool GLShader::Initialize()
 {
+    if (initialized)
+        Release();
+
     program = glCreateProgram();
     glAttachShader(program, vertexShader);
     glAttachShader(program, geometryShader);
@@ -126,19 +125,24 @@ bool GLShader::Initialize()
         return false;
     }
 
+    initialized = true;
     cout << "Shader initialize" << endl;
     return true;
 }
 
 void GLShader::Release()
 {
-    glDetachShader(program, vertexShader);
-    glDetachShader(program, fragmentShader);
-    glDetachShader(program, geometryShader);
-    glDeleteShader(geometryShader);
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
-    glDeleteProgram(program);
+    if (initialized)
+    {
+        glDetachShader(program, vertexShader);
+        glDetachShader(program, fragmentShader);
+        glDetachShader(program, geometryShader);
+        glDeleteShader(geometryShader);
+        glDeleteShader(vertexShader);
+        glDeleteShader(fragmentShader);
+        glDeleteProgram(program);
 
-    cout << "Shader release" << endl;
+        initialized = false;
+        cout << "Shader release" << endl;
+    }
 }
