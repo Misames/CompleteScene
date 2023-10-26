@@ -43,6 +43,7 @@ void Object::Initialize()
     mesh->Initialize();
 
     texture = new Texture();
+    texture->Initialize();
 
     shader = new GLShader();
 #ifdef _DEBUG
@@ -71,7 +72,7 @@ void Object::Initialize()
     cout << "Object initialize" << endl;
 }
 
-void Object::Render()
+void Object::Render() const
 {
     if (enabled == false)
         return;

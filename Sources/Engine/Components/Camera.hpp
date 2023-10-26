@@ -33,7 +33,7 @@ public:
     ~Camera();
 
     // Updates and exports the camera matrix to the Vertex Shader
-    void Matrix(int width, int height, GLShader *shader, const char *uniform);
+    void Matrix(int width, int height, GLuint program, const char *uniform);
 
     // Handles camera inputs
     void Inputs(int width, int height, GLFWwindow *window);

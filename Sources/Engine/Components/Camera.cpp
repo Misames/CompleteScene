@@ -17,7 +17,7 @@ Camera::~Camera()
     cout << "Camera release" << endl;
 }
 
-void Camera::Matrix(int width, int height, GLShader *shader, const char *uniform)
+void Camera::Matrix(int width, int height, GLuint program, const char *uniform)
 {
     // Initializes matrices since otherwise they will be the null matrix
     mat4 view = mat4(1.0f);
@@ -30,7 +30,7 @@ void Camera::Matrix(int width, int height, GLShader *shader, const char *uniform
     projection = perspective(radians(fov), (float)width / height, near, far);
 
     // Exports the camera matrix to the Vertex Shader
-    glUniformMatrix4fv(glGetUniformLocation(shader->GetProgram(), uniform), 1, GL_FALSE, value_ptr(projection * view));
+    glUniformMatrix4fv(glGetUniformLocation(program, uniform), 1, GL_FALSE, value_ptr(projection * view));
 }
 
 void Camera::Inputs(int width, int height, GLFWwindow *window)

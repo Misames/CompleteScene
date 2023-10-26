@@ -1,7 +1,6 @@
 #pragma once
 
 #include <GL/glew.h>
-#include <GLFW/glfw3.h>
 #include "Mesh.hpp"
 #include "Texture.hpp"
 #include "Transform.hpp"
@@ -15,6 +14,7 @@ private:
     GLint positionLocation;
     GLint normalLocation;
     GLint texCoordLocation;
+    bool initialized = false;
 
     GLShader *shader = nullptr;
     Mesh *mesh = nullptr;
@@ -23,13 +23,12 @@ private:
 
 public:
     bool enabled = false;
-    bool initialized = false;
 
     ~Object();
 
     void Release();
     void Initialize();
-    void Render();
+    void Render() const;
 
     GLShader *GetShader() const;
     Mesh *GetMesh() const;

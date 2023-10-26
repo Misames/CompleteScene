@@ -6,11 +6,18 @@
 class Texture
 {
 private:
-    uint8_t data[4] = {255, 255, 255, 255};
+    bool initialized = false;
+    int width;
+    int height;
+    int comp;
+    uint8_t *data;
 
 public:
     GLuint textureId;
 
-    Texture();
-    void Load(uint8_t color[4]);
+    ~Texture();
+    void Initialize();
+    void Release();
+    void Load(const uint8_t color[4]);
+    void LoadImage(const char *path);
 };

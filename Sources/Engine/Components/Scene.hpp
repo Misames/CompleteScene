@@ -5,6 +5,7 @@
 #include <GLFW/glfw3.h>
 #include "Camera.hpp"
 #include "Object.hpp"
+#include "Skybox.hpp"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ private:
     const char *name = "SampleScene";
     vector<Object *> lstObj;
     Camera *camera = nullptr;
+    Skybox skybox;
 
 public:
     ~Scene();

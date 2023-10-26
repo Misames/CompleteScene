@@ -20,6 +20,8 @@ void Scene::Initialize()
     if (!obj)
         throw bad_alloc();
 
+    skybox.Initialize();
+
     obj->Initialize();
     obj->GetMesh()->LoadMesh("Sources/Assets/Mesh/lightning_obj.obj");
     uint8_t pink[4] = {255, 0, 255, 255};
@@ -70,7 +72,7 @@ void Scene::RenderScene(GLFWwindow *glfwWindow)
     camera->Inputs(width, height, glfwWindow);
     for (Object *currentObject : lstObj)
     {
-        camera->Matrix(width, height, currentObject->GetShader(), "u_projection");
+        camera->Matrix(width, height, currentObject->GetShader()->GetProgram(), "u_projection");
         currentObject->Render();
     }
 
