@@ -12,32 +12,30 @@ void Scene::Initialize()
     if (initialized)
         Release();
 
+    skybox = new Skybox();
+    if (!skybox)
+        throw bad_alloc();
+    skybox->Initialize();
+
     camera = new Camera(vec3(0.0f, 0.0f, 2.0f));
     if (!camera)
         throw bad_alloc();
 
-    Object *obj = new Object();
-    if (!obj)
+    Object *lightning = new Object();
+    if (!lightning)
         throw bad_alloc();
-
-    skybox = new Skybox();
-    skybox->Initialize();
-
-    obj->Initialize();
-    obj->GetMesh()->LoadMesh("Sources/Assets/Mesh/lightning_obj.obj");
+    lightning->Initialize();
+    lightning->GetMesh()->LoadMesh("Sources/Assets/Mesh/lightning_obj.obj");
     uint8_t pink[4] = {255, 0, 255, 255};
-    obj->GetTexture()->Load(pink);
-    obj->enabled = false;
-    lstObj.push_back(obj);
+    lightning->GetTexture()->Load(pink);
+    lstObj.push_back(lightning);
 
-    Object *obj2 = new Object();
-    if (!obj2)
+    Object *cube = new Object();
+    if (!cube)
         throw bad_alloc();
-
-    obj2->Initialize();
-    obj2->GetMesh()->LoadMesh("Sources/Assets/Mesh/cube.obj");
-    obj2->enabled = true;
-    lstObj.push_back(obj2);
+    cube->Initialize();
+    cube->GetMesh()->LoadMesh("Sources/Assets/Mesh/cube.obj");
+    lstObj.push_back(cube);
 
     initialized = true;
     cout << "Scene initialize" << endl;
@@ -47,6 +45,13 @@ void Scene::Release()
 {
     if (initialized)
     {
+        skybox->Release();
+        delete skybox;
+        skybox = nullptr;
+
+        delete camera;
+        camera = nullptr;
+
         for (Object *currentObject : lstObj)
         {
             currentObject->Release();
@@ -54,12 +59,8 @@ void Scene::Release()
             currentObject = nullptr;
         }
 
-        delete camera;
-        camera = nullptr;
-
-        skybox->Release();
-        delete skybox;
-        skybox = nullptr;
+        glUseProgram(0);
+        glBindVertexArray(0);
 
         initialized = false;
         cout << "Scene release" << endl;
@@ -68,16 +69,17 @@ void Scene::Release()
 
 void Scene::RenderScene(GLFWwindow *glfwWindow)
 {
-    int width, height;
-    glfwGetWindowSize(glfwWindow, &width, &height);
-    glViewport(0, 0, width, height);
+    int widthWindow, heightWindow;
+    glfwGetWindowSize(glfwWindow, &widthWindow, &heightWindow);
+    glViewport(0, 0, widthWindow, heightWindow);
     glClearColor(0.5f, 0.5f, 0.5f, 1.f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    camera->Inputs(width, height, glfwWindow);
+    camera->Inputs(widthWindow, heightWindow, glfwWindow);
+
     for (Object *currentObject : lstObj)
     {
-        camera->Matrix(width, height, currentObject->GetShader()->GetProgram(), "u_projection");
+        camera->Matrix(widthWindow, heightWindow, currentObject->GetShader()->GetProgram(), "u_projection");
         currentObject->Render();
     }
 

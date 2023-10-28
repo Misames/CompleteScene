@@ -7,9 +7,6 @@ class Texture
 {
 private:
     bool initialized = false;
-    int width;
-    int height;
-    int comp;
     uint8_t *data = nullptr;
 
 public:

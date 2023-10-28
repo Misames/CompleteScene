@@ -9,8 +9,9 @@
 class Object
 {
 private:
-    GLuint VBO;
     GLuint VAO;
+    GLuint VBO;
+    GLuint program;
     GLint positionLocation;
     GLint normalLocation;
     GLint texCoordLocation;

@@ -14,21 +14,24 @@ void Object::Release()
 {
     if (initialized)
     {
-        shader->Release();
-        delete shader;
-        shader = nullptr;
+        transform->Release();
+        delete transform;
+        transform = nullptr;
 
         mesh->Release();
         delete mesh;
         mesh = nullptr;
 
-        transform->Release();
-        delete transform;
-        transform = nullptr;
-
         texture->Release();
         delete texture;
         texture = nullptr;
+
+        shader->Release();
+        delete shader;
+        shader = nullptr;
+
+        glDeleteBuffers(1, &VBO);
+        glDeleteVertexArrays(1, &VAO);
 
         initialized = false;
         enabled = false;
@@ -61,8 +64,7 @@ void Object::Initialize()
 #endif
 
     shader->Initialize();
-
-    GLuint program = shader->GetProgram();
+    program = shader->GetProgram();
     glUseProgram(program);
 
     glGenVertexArrays(1, &VAO);

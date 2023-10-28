@@ -9,11 +9,16 @@
 Camera::Camera(vec3 position)
 {
     this->position = position;
+    transform = new Transform();
+    transform->Initialize();
     cout << "Camera initialize" << endl;
 }
 
 Camera::~Camera()
 {
+    transform->Release();
+    delete transform;
+    transform = nullptr;
     cout << "Camera release" << endl;
 }
 

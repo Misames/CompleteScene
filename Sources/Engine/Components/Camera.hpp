@@ -4,6 +4,7 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include "GLShader.hpp"
+#include "Transform.hpp"
 
 using namespace std;
 using namespace glm;
@@ -11,6 +12,8 @@ using namespace glm;
 class Camera
 {
 private:
+    Transform *transform = nullptr;
+
     // Stores the main vectors of the camera
     vec3 position;
     vec3 orientation = vec3(0.0f, 0.0f, -1.0f);
