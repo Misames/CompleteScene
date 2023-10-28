@@ -16,7 +16,7 @@ void Transform::Initialize()
 
     position = vec3(0.0f);
     rotation = vec3(0.0f);
-    scale = vec3(1.0f);
+    scale = vec3(0.0f);
 
     initialized = true;
     enabled = true;
@@ -25,9 +25,12 @@ void Transform::Initialize()
 
 void Transform::Release()
 {
-    initialized = false;
-    enabled = false;
-    cout << "Transform release" << endl;
+    if (initialized)
+    {
+        initialized = false;
+        enabled = false;
+        cout << "Transform release" << endl;
+    }
 }
 
 void Transform::Update() {}

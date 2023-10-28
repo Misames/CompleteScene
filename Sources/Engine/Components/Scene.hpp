@@ -14,10 +14,9 @@ class Scene
 private:
     uint8_t id;
     bool initialized = false;
-    const char *name = "SampleScene";
     vector<Object *> lstObj;
     Camera *camera = nullptr;
-    Skybox skybox;
+    Skybox *skybox = nullptr;
 
 public:
     ~Scene();

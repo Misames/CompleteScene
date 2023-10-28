@@ -22,6 +22,11 @@ void Object::Release()
         delete mesh;
         mesh = nullptr;
 
+        transform->Release();
+        delete transform;
+        transform = nullptr;
+
+        texture->Release();
         delete texture;
         texture = nullptr;
 
@@ -46,15 +51,17 @@ void Object::Initialize()
     texture->Initialize();
 
     shader = new GLShader();
+
 #ifdef _DEBUG
     shader->LoadVertexShader("Sources/Shaders/vertex.glsl");
     shader->LoadFragmentShader("Sources/Shaders/fragment.glsl");
-    shader->Initialize();
 #else
     shader->LoadVertexShader("vertex.glsl");
     shader->LoadFragmentShader("fragment.glsl");
-    shader->Initialize();
 #endif
+
+    shader->Initialize();
+
     GLuint program = shader->GetProgram();
     glUseProgram(program);
 

@@ -10,7 +10,7 @@ private:
     int width;
     int height;
     int comp;
-    uint8_t *data;
+    uint8_t *data = nullptr;
 
 public:
     GLuint textureId;

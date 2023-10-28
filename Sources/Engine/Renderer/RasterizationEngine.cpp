@@ -50,9 +50,12 @@ void RasterizationEngine::Release()
         if (renderer)
         {
             renderer->Release();
+            delete renderer;
+            renderer = nullptr;
+
             scene->Release();
-            delete renderer, scene;
-            renderer, scene = nullptr;
+            delete scene;
+            scene = nullptr;
         }
 
         initialized = false;

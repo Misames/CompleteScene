@@ -1,7 +1,10 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb/stb_image.h>
 
+#include <iostream>
 #include "Texture.hpp"
+
+using namespace std;
 
 Texture::~Texture()
 {
@@ -31,6 +34,8 @@ void Texture::Release()
 {
     if (initialized)
     {
+        delete data;
+        data = nullptr;
         initialized = false;
     }
 }
@@ -48,9 +53,11 @@ void Texture::Load(const uint8_t color[4])
 void Texture::LoadImage(const char *path)
 {
     data = stbi_load(path, &width, &height, &comp, STBI_rgb_alpha);
-    if (data)
+    if (!data)
     {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
         stbi_image_free(data);
     }
+    else
+        throw bad_alloc();
 }

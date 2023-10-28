@@ -20,13 +20,14 @@ void Scene::Initialize()
     if (!obj)
         throw bad_alloc();
 
-    skybox.Initialize();
+    skybox = new Skybox();
+    skybox->Initialize();
 
     obj->Initialize();
     obj->GetMesh()->LoadMesh("Sources/Assets/Mesh/lightning_obj.obj");
     uint8_t pink[4] = {255, 0, 255, 255};
     obj->GetTexture()->Load(pink);
-    obj->enabled = true;
+    obj->enabled = false;
     lstObj.push_back(obj);
 
     Object *obj2 = new Object();
@@ -55,6 +56,10 @@ void Scene::Release()
 
         delete camera;
         camera = nullptr;
+
+        skybox->Release();
+        delete skybox;
+        skybox = nullptr;
 
         initialized = false;
         cout << "Scene release" << endl;
