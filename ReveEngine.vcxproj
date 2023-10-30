@@ -22,8 +22,9 @@
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{7ebaffb0-ee26-4b0e-8b37-2cda0ddeac00}</ProjectGuid>
-    <RootNamespace>CompleteScene</RootNamespace>
+    <RootNamespace>ReveEngine</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>ReveEngine</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -164,11 +165,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Engine\Components\Camera.cpp" />
+    <ClCompile Include="Sources\Engine\Components\GLShader.cpp" />
     <ClCompile Include="Sources\Engine\Components\IComponent.cpp" />
     <ClCompile Include="Sources\Engine\Components\IEntity.cpp" />
     <ClCompile Include="Sources\Engine\Components\Mesh.cpp" />
     <ClCompile Include="Sources\Engine\Components\Object.cpp" />
     <ClCompile Include="Sources\Engine\Components\Scene.cpp" />
+    <ClCompile Include="Sources\Engine\Components\Skybox.cpp" />
     <ClCompile Include="Sources\Engine\Components\Texture.cpp" />
     <ClCompile Include="Sources\Engine\Components\Transform.cpp" />
     <ClCompile Include="Sources\Engine\Engine.cpp" />
@@ -180,7 +183,6 @@
     <ClCompile Include="Sources\Engine\Renderer\OpenGL\OpenGLWindow.cpp" />
     <ClCompile Include="Sources\Engine\Renderer\RasterizationEngine.cpp" />
     <ClCompile Include="Sources\main.cpp" />
-    <ClCompile Include="Sources\Tools\GLShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\GLFW\glfw3.h" />
@@ -192,11 +194,13 @@
     <ClInclude Include="Includes\stb\stb_image.h" />
     <ClInclude Include="Includes\tiny_obj_loader.hpp" />
     <ClInclude Include="Sources\Engine\Components\Camera.hpp" />
+    <ClInclude Include="Sources\Engine\Components\GLShader.hpp" />
     <ClInclude Include="Sources\Engine\Components\IComponent.hpp" />
     <ClInclude Include="Sources\Engine\Components\IEntity.hpp" />
     <ClInclude Include="Sources\Engine\Components\Mesh.hpp" />
     <ClInclude Include="Sources\Engine\Components\Object.hpp" />
     <ClInclude Include="Sources\Engine\Components\Scene.hpp" />
+    <ClInclude Include="Sources\Engine\Components\Skybox.hpp" />
     <ClInclude Include="Sources\Engine\Components\Texture.hpp" />
     <ClInclude Include="Sources\Engine\Components\Transform.hpp" />
     <ClInclude Include="Sources\Engine\Components\Vertex.hpp" />
@@ -208,12 +212,12 @@
     <ClInclude Include="Sources\Engine\Renderer\OpenGL\OpenGLRenderer.hpp" />
     <ClInclude Include="Sources\Engine\Renderer\OpenGL\OpenGLWindow.hpp" />
     <ClInclude Include="Sources\Engine\Renderer\RasterizationEngine.hpp" />
-    <ClInclude Include="Sources\Engine\Renderer\Vertex.hpp" />
-    <ClInclude Include="Sources\Tools\GLShader.hpp" />
     <ClInclude Include="Sources\Tools\Utils.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Sources\Shaders\fragment.glsl" />
+    <None Include="Sources\Shaders\skybox_fragment.glsl" />
+    <None Include="Sources\Shaders\skybox_vertex.glsl" />
     <None Include="Sources\Shaders\vertex.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

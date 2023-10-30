@@ -36,9 +36,6 @@
     <ClCompile Include="Sources\main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Tools\GLShader.cpp">
-      <Filter>Fichiers sources\Tools</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\Engine\Renderer\IWindow.cpp">
       <Filter>Fichiers sources\Engine\Renderer</Filter>
     </ClCompile>
@@ -87,6 +84,12 @@
     <ClCompile Include="Sources\Engine\Components\Texture.cpp">
       <Filter>Fichiers sources\Engine\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Engine\Components\GLShader.cpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Engine\Components\Skybox.cpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\GLFW\glfw3.h">
@@ -106,9 +109,6 @@
     </ClInclude>
     <ClInclude Include="Includes\GL\wglew.h">
       <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Tools\GLShader.hpp">
-      <Filter>Fichiers sources\Tools</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Engine\Renderer\IWindow.hpp">
       <Filter>Fichiers sources\Engine\Renderer</Filter>
@@ -140,9 +140,6 @@
     <ClInclude Include="Sources\Tools\Utils.hpp">
       <Filter>Fichiers sources\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Engine\Renderer\Vertex.hpp">
-      <Filter>Fichiers sources\Engine\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\Engine\Components\Mesh.hpp">
       <Filter>Fichiers sources\Engine\Components</Filter>
     </ClInclude>
@@ -173,12 +170,24 @@
     <ClInclude Include="Sources\Engine\Components\Texture.hpp">
       <Filter>Fichiers sources\Engine\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\GLShader.hpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\Skybox.hpp">
+      <Filter>Fichiers sources\Engine\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Sources\Shaders\fragment.glsl">
       <Filter>Fichiers sources\Shaders</Filter>
     </None>
     <None Include="Sources\Shaders\vertex.glsl">
+      <Filter>Fichiers sources\Shaders</Filter>
+    </None>
+    <None Include="Sources\Shaders\skybox_fragment.glsl">
+      <Filter>Fichiers sources\Shaders</Filter>
+    </None>
+    <None Include="Sources\Shaders\skybox_vertex.glsl">
       <Filter>Fichiers sources\Shaders</Filter>
     </None>
   </ItemGroup>

@@ -21,7 +21,7 @@
                 "-lglew32",
                 "-lglfw3dll",
                 "-o",
-                "${workspaceFolder}\\Builds\\Debug\\CompleteScene.exe",
+                "${workspaceFolder}\\Builds\\Debug\\ReveEngine.exe",
                 "-w"
             ],
             "presentation": {
