@@ -26,8 +26,7 @@ void Scene::Initialize()
         throw bad_alloc();
     lightning->Initialize();
     lightning->GetMesh()->LoadMesh("Sources/Assets/Mesh/lightning_obj.obj");
-    uint8_t pink[4] = {255, 0, 255, 255};
-    lightning->GetTexture()->Load(pink);
+    lightning->GetTexture()->LoadImage("Sources/Assets/Textures/brick.png");
     lstObj.push_back(lightning);
 
     Object *cube = new Object();

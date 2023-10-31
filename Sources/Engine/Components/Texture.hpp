@@ -15,6 +15,6 @@ public:
     ~Texture();
     void Initialize();
     void Release();
-    void Load(const uint8_t color[4]);
+    void Load(const uint8_t color[4]) const;
     void LoadImage(const char *path);
 };

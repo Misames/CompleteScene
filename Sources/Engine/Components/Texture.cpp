@@ -46,7 +46,7 @@ void Texture::Release()
     }
 }
 
-void Texture::Load(const uint8_t color[4])
+void Texture::Load(const uint8_t color[4]) const
 {
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 1, 1, 0, GL_RGBA, GL_UNSIGNED_BYTE, color);
 
@@ -63,7 +63,6 @@ void Texture::LoadImage(const char *path)
     if (data)
     {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-        stbi_image_free(data);
     }
     else
         throw bad_alloc();
