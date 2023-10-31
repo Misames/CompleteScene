@@ -31,6 +31,27 @@
     <Filter Include="Fichiers sources\Engine\Components">
       <UniqueIdentifier>{78fd9ac3-9077-48f6-b726-10fc02230e25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Engine">
+      <UniqueIdentifier>{664a9511-b9ac-4cd1-88e0-c9e3aa7ee203}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Tools">
+      <UniqueIdentifier>{2f48890f-b5de-40a4-8797-9243432d0b38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Engine\Components">
+      <UniqueIdentifier>{00c63062-6ef9-49a6-850c-d99158ea666d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Engine\Renderer">
+      <UniqueIdentifier>{fcaf738f-aaad-437c-bf30-ba9c52c38c2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Engine\Renderer\OpenGL">
+      <UniqueIdentifier>{b94a2b42-61dc-4a65-9b6d-0871f9b3485e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Engine\Renderer\DirectX">
+      <UniqueIdentifier>{4231fe47-5286-47d1-81da-2e570ce918f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Engine\Renderer\Vulkan">
+      <UniqueIdentifier>{0cbda383-983e-428a-b859-8096ffc706cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -110,50 +131,11 @@
     <ClInclude Include="Includes\GL\wglew.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Engine\Renderer\IWindow.hpp">
-      <Filter>Fichiers sources\Engine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Engine\Renderer\IRenderer.hpp">
-      <Filter>Fichiers sources\Engine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Engine\Renderer\IRenderingEngine.hpp">
-      <Filter>Fichiers sources\Engine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Engine\Renderer\RasterizationEngine.hpp">
-      <Filter>Fichiers sources\Engine\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\Engine\Engine.hpp">
       <Filter>Fichiers sources\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Engine\Renderer\OpenGL\OpenGLCore.hpp">
-      <Filter>Fichiers sources\Engine\Renderer\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Engine\Renderer\OpenGL\OpenGLRenderer.hpp">
-      <Filter>Fichiers sources\Engine\Renderer\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Engine\Renderer\OpenGL\OpenGLWindow.hpp">
-      <Filter>Fichiers sources\Engine\Renderer\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Engine\Components\Camera.hpp">
-      <Filter>Fichiers sources\Engine\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\Tools\Utils.hpp">
       <Filter>Fichiers sources\Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Engine\Components\Mesh.hpp">
-      <Filter>Fichiers sources\Engine\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Engine\Components\Object.hpp">
-      <Filter>Fichiers sources\Engine\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Engine\Components\Scene.hpp">
-      <Filter>Fichiers sources\Engine\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Engine\Components\Transform.hpp">
-      <Filter>Fichiers sources\Engine\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Engine\Components\Vertex.hpp">
-      <Filter>Fichiers sources\Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="Includes\tiny_obj_loader.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
@@ -161,20 +143,59 @@
     <ClInclude Include="Includes\stb\stb_image.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Engine\Components\IComponent.hpp">
-      <Filter>Fichiers sources\Engine\Components</Filter>
+    <ClInclude Include="Sources\Engine\Renderer\OpenGL\OpenGLCore.hpp">
+      <Filter>Fichiers d%27en-tête\Engine\Renderer\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Engine\Components\IEntity.hpp">
-      <Filter>Fichiers sources\Engine\Components</Filter>
+    <ClInclude Include="Sources\Engine\Renderer\OpenGL\OpenGLRenderer.hpp">
+      <Filter>Fichiers d%27en-tête\Engine\Renderer\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Renderer\OpenGL\OpenGLWindow.hpp">
+      <Filter>Fichiers d%27en-tête\Engine\Renderer\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Renderer\IRenderer.hpp">
+      <Filter>Fichiers d%27en-tête\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Renderer\IRenderingEngine.hpp">
+      <Filter>Fichiers d%27en-tête\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Renderer\IWindow.hpp">
+      <Filter>Fichiers d%27en-tête\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Renderer\RasterizationEngine.hpp">
+      <Filter>Fichiers d%27en-tête\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\Vertex.hpp">
+      <Filter>Fichiers d%27en-tête\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\Transform.hpp">
+      <Filter>Fichiers d%27en-tête\Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Engine\Components\Texture.hpp">
-      <Filter>Fichiers sources\Engine\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Engine\Components\GLShader.hpp">
-      <Filter>Fichiers sources\Engine\Components</Filter>
+      <Filter>Fichiers d%27en-tête\Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Engine\Components\Skybox.hpp">
-      <Filter>Fichiers sources\Engine\Components</Filter>
+      <Filter>Fichiers d%27en-tête\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\Scene.hpp">
+      <Filter>Fichiers d%27en-tête\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\Object.hpp">
+      <Filter>Fichiers d%27en-tête\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\Mesh.hpp">
+      <Filter>Fichiers d%27en-tête\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\IEntity.hpp">
+      <Filter>Fichiers d%27en-tête\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\IComponent.hpp">
+      <Filter>Fichiers d%27en-tête\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\GLShader.hpp">
+      <Filter>Fichiers d%27en-tête\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\Camera.hpp">
+      <Filter>Fichiers d%27en-tête\Engine\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
