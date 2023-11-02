@@ -65,16 +65,15 @@ void Object::Initialize()
 
     shader->Initialize();
     program = shader->GetProgram();
-    glUseProgram(program);
 
     glGenVertexArrays(1, &VAO);
     glBindVertexArray(VAO);
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-    positionLocation = glGetAttribLocation(program, "a_position");
-    texCoordLocation = glGetAttribLocation(program, "a_texcoords");
-    normalLocation = glGetAttribLocation(program, "a_normal");
+    positionLocation = glGetAttribLocation(program, "aPosition");
+    texCoordLocation = glGetAttribLocation(program, "aTexcoords");
+    normalLocation = glGetAttribLocation(program, "aNormal");
 
     initialized = true;
     enabled = true;
@@ -98,6 +97,7 @@ void Object::Render() const
     glVertexAttribPointer(texCoordLocation, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, uv));
     glVertexAttribPointer(normalLocation, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, normal));
 
+    glUseProgram(program);
     glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(mesh->vertexs.size()));
 
     glDisableVertexAttribArray(positionLocation);

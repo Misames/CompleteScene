@@ -164,6 +164,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Engine\Components\Axes.cpp" />
     <ClCompile Include="Sources\Engine\Components\Camera.cpp" />
     <ClCompile Include="Sources\Engine\Components\GLShader.cpp" />
     <ClCompile Include="Sources\Engine\Components\IComponent.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="Includes\GL\wglew.h" />
     <ClInclude Include="Includes\stb\stb_image.h" />
     <ClInclude Include="Includes\tiny_obj_loader.hpp" />
+    <ClInclude Include="Sources\Engine\Components\Axes.hpp" />
     <ClInclude Include="Sources\Engine\Components\Camera.hpp" />
     <ClInclude Include="Sources\Engine\Components\GLShader.hpp" />
     <ClInclude Include="Sources\Engine\Components\IComponent.hpp" />
@@ -215,6 +217,8 @@
     <ClInclude Include="Sources\Tools\Utils.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Sources\Shaders\axes_fragment.glsl" />
+    <None Include="Sources\Shaders\axes_vertex.glsl" />
     <None Include="Sources\Shaders\fragment.glsl" />
     <None Include="Sources\Shaders\skybox_fragment.glsl" />
     <None Include="Sources\Shaders\skybox_vertex.glsl" />

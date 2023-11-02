@@ -19,7 +19,7 @@ public:
     ~Axes();
     void Initialize();
     void Release();
-    void Render(int, int) const;
+    void Render(int width, int height) const;
 
     GLShader *GetShader() const;
 };

@@ -16,9 +16,6 @@
     <Filter Include="Fichiers sources\Shaders">
       <UniqueIdentifier>{bba0b436-2976-4d7e-9e24-9aa5b8d6e831}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Tools">
-      <UniqueIdentifier>{dab4be82-a287-4beb-ae6b-b3cb9e80efad}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers sources\Engine">
       <UniqueIdentifier>{45796333-7640-46c5-be18-0f6ad1929c64}</UniqueIdentifier>
     </Filter>
@@ -51,6 +48,9 @@
     </Filter>
     <Filter Include="Fichiers d%27en-tête\Engine\Renderer\Vulkan">
       <UniqueIdentifier>{0cbda383-983e-428a-b859-8096ffc706cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Headers">
+      <UniqueIdentifier>{1c7bd570-110f-4878-b579-503d01cd1685}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -111,38 +111,11 @@
     <ClCompile Include="Sources\Engine\Components\Skybox.cpp">
       <Filter>Fichiers sources\Engine\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Engine\Components\Axes.cpp">
+      <Filter>Fichiers d%27en-tête\Engine\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Includes\GLFW\glfw3.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Includes\GLFW\glfw3native.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Includes\GL\eglew.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Includes\GL\glew.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Includes\GL\glxew.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Includes\GL\wglew.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Engine\Engine.hpp">
-      <Filter>Fichiers sources\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Tools\Utils.hpp">
-      <Filter>Fichiers sources\Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="Includes\tiny_obj_loader.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Includes\stb\stb_image.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\Engine\Renderer\OpenGL\OpenGLCore.hpp">
       <Filter>Fichiers d%27en-tête\Engine\Renderer\OpenGL</Filter>
     </ClInclude>
@@ -197,6 +170,39 @@
     <ClInclude Include="Sources\Engine\Components\Camera.hpp">
       <Filter>Fichiers d%27en-tête\Engine\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Engine\Components\Axes.hpp">
+      <Filter>Fichiers d%27en-tête\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Tools\Utils.hpp">
+      <Filter>Fichiers d%27en-tête\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Engine\Engine.hpp">
+      <Filter>Fichiers d%27en-tête\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\GL\eglew.h">
+      <Filter>Fichiers d%27en-tête\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\GL\glew.h">
+      <Filter>Fichiers d%27en-tête\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\GLFW\glfw3.h">
+      <Filter>Fichiers d%27en-tête\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\GLFW\glfw3native.h">
+      <Filter>Fichiers d%27en-tête\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\GL\glxew.h">
+      <Filter>Fichiers d%27en-tête\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\stb\stb_image.h">
+      <Filter>Fichiers d%27en-tête\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\tiny_obj_loader.hpp">
+      <Filter>Fichiers d%27en-tête\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\GL\wglew.h">
+      <Filter>Fichiers d%27en-tête\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Sources\Shaders\fragment.glsl">
@@ -209,6 +215,12 @@
       <Filter>Fichiers sources\Shaders</Filter>
     </None>
     <None Include="Sources\Shaders\skybox_vertex.glsl">
+      <Filter>Fichiers sources\Shaders</Filter>
+    </None>
+    <None Include="Sources\Shaders\axes_fragment.glsl">
+      <Filter>Fichiers sources\Shaders</Filter>
+    </None>
+    <None Include="Sources\Shaders\axes_vertex.glsl">
       <Filter>Fichiers sources\Shaders</Filter>
     </None>
   </ItemGroup>

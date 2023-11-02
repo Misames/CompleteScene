@@ -67,9 +67,6 @@ void Scene::Release()
             currentObject = nullptr;
         }
 
-        glUseProgram(0);
-        glBindVertexArray(0);
-
         initialized = false;
         cout << "Scene release" << endl;
     }
@@ -87,12 +84,12 @@ void Scene::RenderScene(GLFWwindow *glfwWindow)
 
     for (Object *currentObject : lstObj)
     {
-        camera->Matrix(widthWindow, heightWindow, currentObject->GetShader()->GetProgram(), "u_projection");
+        camera->Matrix(widthWindow, heightWindow, currentObject->GetShader()->GetProgram());
         currentObject->Render();
     }
 
+    camera->Matrix(widthWindow, heightWindow, axes->GetShader()->GetProgram());
     axes->Render(widthWindow, heightWindow);
-    camera->Matrix(widthWindow, heightWindow, axes->GetShader()->GetProgram(), "projection");
 
     glfwSwapBuffers(glfwWindow);
 }

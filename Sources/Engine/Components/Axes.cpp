@@ -25,15 +25,14 @@ void Axes::Initialize()
 
     shader->Initialize();
     program = shader->GetProgram();
-    glUseProgram(program);
 
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glGenVertexArrays(1, &VAO);
     glBindVertexArray(VAO);
 
-    positionLocation = glGetAttribLocation(program, "inPosition");
-    colorLocation = glGetAttribLocation(program, "inColor");
+    positionLocation = glGetAttribLocation(program, "aPosition");
+    colorLocation = glGetAttribLocation(program, "aColor");
 
     initialized = true;
     enabled = true;
@@ -71,11 +70,12 @@ void Axes::Render(int width, int height) const
     glBufferData(GL_ARRAY_BUFFER, sizeof(axesVertices), axesVertices, GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(positionLocation);
-    glVertexAttribPointer(positionLocation, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid *)0);
-
     glEnableVertexAttribArray(colorLocation);
+
+    glVertexAttribPointer(positionLocation, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid *)0);
     glVertexAttribPointer(colorLocation, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid *)(3 * sizeof(GLfloat)));
 
+    glUseProgram(program);
     glDrawArrays(GL_LINES, 0, 6);
 
     glDisableVertexAttribArray(positionLocation);

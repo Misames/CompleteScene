@@ -8,13 +8,16 @@
 using namespace std;
 using namespace tinyobj;
 
-struct Mesh : IComponent
+class Mesh : IComponent
 {
+private:
     uint32_t indexVertex;
     attrib_t attribs;
-    vector<Vertex> vertexs;
     vector<shape_t> shapes;
     vector<material_t> materials;
+
+public:
+    vector<Vertex> vertexs;
 
     ~Mesh() override;
 

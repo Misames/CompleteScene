@@ -9,13 +9,9 @@
 class Object
 {
 private:
-    GLuint VAO;
-    GLuint VBO;
-    GLuint program;
-    GLint positionLocation;
-    GLint normalLocation;
-    GLint texCoordLocation;
     bool initialized = false;
+    GLuint VAO, VBO, program;
+    GLint positionLocation, normalLocation, texCoordLocation;
 
     GLShader *shader = nullptr;
     Mesh *mesh = nullptr;
