@@ -1,5 +1,5 @@
-#include "Mesh.hpp"
 #include "GLShader.hpp"
+#include "Mesh.hpp"
 
 #include "Axes.hpp"
 
@@ -14,13 +14,15 @@ void Axes::Initialize()
         Release();
 
     shader = new GLShader();
+    if (!shader)
+        throw bad_alloc();
 
 #ifdef _DEBUG
-    shader->LoadVertexShader("Sources/Shaders/axes_vertex.glsl");
-    shader->LoadFragmentShader("Sources/Shaders/axes_fragment.glsl");
+    shader->LoadVertexShader("Sources/Shaders/AxesVertex.glsl");
+    shader->LoadFragmentShader("Sources/Shaders/AxesFragment.glsl");
 #else
-    shader->LoadVertexShader("axes_vertex.glsl");
-    shader->LoadFragmentShader("axes_fragment.glsl");
+    shader->LoadVertexShader("AxesVertex.glsl");
+    shader->LoadFragmentShader("AxesFragment.glsl");
 #endif
 
     shader->Initialize();
@@ -54,10 +56,10 @@ void Axes::Release()
 
 void Axes::Render(int width, int height) const
 {
-    if (enabled == false)
+    if (!enabled)
         return;
 
-    GLfloat axesLength = 0.1f * std::min(width, height); // 10% de la taille minimale (largeur ou hauteur)
+    GLfloat axesLength = 0.1f * std::min(width, height);
     GLfloat axesVertices[36] = {
         0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,       // Origine (Rouge)
         axesLength, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // Fin de l'axe X (Rouge)

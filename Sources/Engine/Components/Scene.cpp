@@ -1,8 +1,7 @@
-#include <iostream>
-
 #include "Scene.hpp"
 
 Scene::~Scene()
+#include <iostream>
 {
     Release();
 }
@@ -49,16 +48,25 @@ void Scene::Release()
 {
     if (initialized)
     {
-        axes->Release();
-        delete axes;
-        axes = nullptr;
+        if (axes)
+        {
+            axes->Release();
+            delete axes;
+            axes = nullptr;
+        }
 
-        skybox->Release();
-        delete skybox;
-        skybox = nullptr;
+        if (skybox)
+        {
+            skybox->Release();
+            delete skybox;
+            skybox = nullptr;
+        }
 
-        delete camera;
-        camera = nullptr;
+        if (camera)
+        {
+            delete camera;
+            camera = nullptr;
+        }
 
         for (Object *currentObject : lstObj)
         {

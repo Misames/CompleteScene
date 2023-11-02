@@ -1,14 +1,9 @@
 #pragma once
 
-#include <vector>
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
 #include "Axes.hpp"
-#include "Skybox.hpp"
 #include "Camera.hpp"
 #include "Object.hpp"
-
-using namespace std;
+#include "Skybox.hpp"
 
 class Scene
 {

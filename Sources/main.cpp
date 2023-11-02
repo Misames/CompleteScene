@@ -8,7 +8,7 @@ int main()
     WindowInfo windowInfo{};
     windowInfo.width = 1280;
     windowInfo.height = 720;
-    windowInfo.title = "Complete Scene";
+    windowInfo.title = "Reve Engine";
 
     RendererInfo rendererinfo{};
     rendererinfo.rendererType = RendererType::OPENGL;

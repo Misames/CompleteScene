@@ -1,9 +1,6 @@
-#include <iostream>
 #include "OpenGL/OpenGLRenderer.hpp"
 
 #include "RasterizationEngine.hpp"
-
-using namespace std;
 
 RasterizationEngine::~RasterizationEngine()
 {
@@ -30,13 +27,11 @@ void RasterizationEngine::Initialize(const RenderingEngineInfo &renderingEngineI
 
     if (!renderer)
         throw bad_alloc();
-
     renderer->Initialize(*renderingEngineInfo.rendererInfo);
 
     scene = new Scene();
     if (!scene)
         throw bad_alloc();
-
     scene->Initialize();
 
     initialized = true;
@@ -52,7 +47,10 @@ void RasterizationEngine::Release()
             renderer->Release();
             delete renderer;
             renderer = nullptr;
+        }
 
+        if (scene)
+        {
             scene->Release();
             delete scene;
             scene = nullptr;

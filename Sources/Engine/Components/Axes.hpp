@@ -2,7 +2,6 @@
 
 #include <GL/glew.h>
 
-class Mesh;
 class GLShader;
 
 class Axes
@@ -20,6 +19,5 @@ public:
     void Initialize();
     void Release();
     void Render(int width, int height) const;
-
     GLShader *GetShader() const;
 };

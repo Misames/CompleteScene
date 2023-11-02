@@ -1,7 +1,7 @@
 #pragma once
 
-#include "IRenderingEngine.hpp"
 #include "../Components/Scene.hpp"
+#include "IRenderingEngine.hpp"
 
 class RasterizationEngine : public IRenderingEngine
 {

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <GL/glew.h>
 #include "Vertex.hpp"
 
 #include "Object.hpp"
@@ -8,35 +9,6 @@ using namespace std;
 Object::~Object()
 {
     Release();
-}
-
-void Object::Release()
-{
-    if (initialized)
-    {
-        transform->Release();
-        delete transform;
-        transform = nullptr;
-
-        mesh->Release();
-        delete mesh;
-        mesh = nullptr;
-
-        texture->Release();
-        delete texture;
-        texture = nullptr;
-
-        shader->Release();
-        delete shader;
-        shader = nullptr;
-
-        glDeleteBuffers(1, &VBO);
-        glDeleteVertexArrays(1, &VAO);
-
-        initialized = false;
-        enabled = false;
-        cout << "Object release" << endl;
-    }
 }
 
 void Object::Initialize()
@@ -56,11 +28,11 @@ void Object::Initialize()
     shader = new GLShader();
 
 #ifdef _DEBUG
-    shader->LoadVertexShader("Sources/Shaders/vertex.glsl");
-    shader->LoadFragmentShader("Sources/Shaders/fragment.glsl");
+    shader->LoadVertexShader("Sources/Shaders/BasicVertex.glsl");
+    shader->LoadFragmentShader("Sources/Shaders/BasicFragment.glsl");
 #else
-    shader->LoadVertexShader("vertex.glsl");
-    shader->LoadFragmentShader("fragment.glsl");
+    shader->LoadVertexShader("BasicVertex.glsl");
+    shader->LoadFragmentShader("BasicFragment.glsl");
 #endif
 
     shader->Initialize();
@@ -78,6 +50,47 @@ void Object::Initialize()
     initialized = true;
     enabled = true;
     cout << "Object initialize" << endl;
+}
+
+void Object::Release()
+{
+    if (initialized)
+    {
+        if (transform)
+        {
+            transform->Release();
+            delete transform;
+            transform = nullptr;
+        }
+
+        if (mesh)
+        {
+            mesh->Release();
+            delete mesh;
+            mesh = nullptr;
+        }
+
+        if (texture)
+        {
+            texture->Release();
+            delete texture;
+            texture = nullptr;
+        }
+
+        if (shader)
+        {
+            shader->Release();
+            delete shader;
+            shader = nullptr;
+        }
+
+        glDeleteBuffers(1, &VBO);
+        glDeleteVertexArrays(1, &VAO);
+
+        initialized = false;
+        enabled = false;
+        cout << "Object release" << endl;
+    }
 }
 
 void Object::Render() const
@@ -105,9 +118,9 @@ void Object::Render() const
     glDisableVertexAttribArray(normalLocation);
 }
 
-GLShader *Object::GetShader() const
+Transform *Object::GetTransform() const
 {
-    return shader;
+    return transform;
 }
 
 Mesh *Object::GetMesh() const
@@ -115,12 +128,12 @@ Mesh *Object::GetMesh() const
     return mesh;
 }
 
-Transform *Object::GetTransform() const
-{
-    return transform;
-}
-
 Texture *Object::GetTexture() const
 {
     return texture;
+}
+
+GLShader *Object::GetShader() const
+{
+    return shader;
 }

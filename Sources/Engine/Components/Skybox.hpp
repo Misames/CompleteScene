@@ -1,15 +1,11 @@
 #pragma once
 
-#include <GL/glew.h>
-#include "GLShader.hpp"
-
 class Skybox
 {
 private:
     bool initialized = false;
+    GLuint program, textureId;
     GLShader *shader = nullptr;
-    GLuint textureId;
-    GLuint program;
 
 public:
     bool enabled = false;

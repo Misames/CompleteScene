@@ -16,6 +16,7 @@ void OpenGLRenderer::Initialize(const RendererInfo &renderInfo)
 
     openglWindow.Initialize(*renderInfo.windowInfo);
     window = &openglWindow;
+
     initialized = true;
     cout << "Renderer initialize" << endl;
 }
@@ -26,6 +27,7 @@ void OpenGLRenderer::Release()
     {
         openglWindow.Release();
         window = nullptr;
+
         initialized = false;
         cout << "Renderer release" << endl;
     }

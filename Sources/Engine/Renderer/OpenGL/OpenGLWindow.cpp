@@ -55,8 +55,12 @@ void OpenGLWindow::Release()
 {
     if (initialized)
     {
-        glfwTerminate();
-        glfwWindow = nullptr;
+        if (glfwWindow)
+        {
+            glfwTerminate();
+            glfwWindow = nullptr;
+        }
+
         initialized = false;
         cout << "Window release" << endl;
     }

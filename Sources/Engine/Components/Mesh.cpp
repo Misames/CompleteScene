@@ -1,5 +1,7 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 
+#include "Vertex.hpp"
+
 #include "Mesh.hpp"
 
 Mesh::~Mesh()

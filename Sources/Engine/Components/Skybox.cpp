@@ -1,6 +1,6 @@
-#include <string>
 #include <iostream>
 #include <stb/stb_image.h>
+#include "GLShader.hpp"
 
 #include "Skybox.hpp"
 
@@ -17,13 +17,15 @@ void Skybox::Initialize()
         Release();
 
     shader = new GLShader();
+    if (!shader)
+        throw bad_alloc();
 
 #ifdef _DEBUG
-    shader->LoadVertexShader("Sources/Shaders/skybox_vertex.glsl");
-    shader->LoadFragmentShader("Sources/Shaders/skybox_fragment.glsl");
+    shader->LoadVertexShader("Sources/Shaders/SkyboxVertex.glsl");
+    shader->LoadFragmentShader("Sources/Shaders/SkyboxFragment.glsl");
 #else
-    shader->LoadVertexShader("skybox_vertex.glsl");
-    shader->LoadFragmentShader("skybox_fragment.glsl");
+    shader->LoadVertexShader("SkyboxVertex.glsl");
+    shader->LoadFragmentShader("SkyboxFragment.glsl");
 #endif
 
     shader->Initialize();
@@ -63,15 +65,16 @@ void Skybox::Release()
 {
     if (initialized)
     {
-        shader->Release();
-        delete shader;
-        shader = nullptr;
+        if (shader)
+        {
+            shader->Release();
+            delete shader;
+            shader = nullptr;
+        }
 
         initialized = false;
         cout << "Skybox release" << endl;
     }
 }
 
-void Skybox::Render() const
-{
-}
+void Skybox::Render() const {}

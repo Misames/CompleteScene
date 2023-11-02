@@ -1,10 +1,7 @@
-#include <iostream>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 #include "Engine.hpp"
-
-using namespace std;
 
 Engine::~Engine()
 {
@@ -31,8 +28,8 @@ void Engine::Initialize(const EngineInfo &info)
 
     if (!renderingEngine)
         throw bad_alloc();
-
     renderingEngine->Initialize(*info.renderingEngineInfo);
+
     initialized = true;
     cout << "Engine initialize" << endl;
 }

@@ -1,10 +1,9 @@
 #pragma once
 
-#include <GL/glew.h>
+#include "GLShader.hpp"
 #include "Mesh.hpp"
 #include "Texture.hpp"
 #include "Transform.hpp"
-#include "GLShader.hpp"
 
 class Object
 {
@@ -13,22 +12,20 @@ private:
     GLuint VAO, VBO, program;
     GLint positionLocation, normalLocation, texCoordLocation;
 
-    GLShader *shader = nullptr;
-    Mesh *mesh = nullptr;
     Transform *transform = nullptr;
+    Mesh *mesh = nullptr;
     Texture *texture = nullptr;
+    GLShader *shader = nullptr;
 
 public:
     bool enabled = false;
 
     ~Object();
-
-    void Release();
     void Initialize();
+    void Release();
     void Render() const;
-
-    GLShader *GetShader() const;
-    Mesh *GetMesh() const;
     Transform *GetTransform() const;
+    Mesh *GetMesh() const;
     Texture *GetTexture() const;
+    GLShader *GetShader() const;
 };

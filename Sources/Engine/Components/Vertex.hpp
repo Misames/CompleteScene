@@ -4,8 +4,9 @@
 
 using namespace glm;
 
-struct Vertex
+class Vertex
 {
+public:
     vec3 position;
     vec3 normal;
     vec2 uv;

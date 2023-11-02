@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../IRenderer.hpp"
 #include "OpenGLWindow.hpp"
+#include "../IRenderer.hpp"
 
 class OpenGLRenderer : public IRenderer
 {

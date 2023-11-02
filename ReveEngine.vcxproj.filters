@@ -112,7 +112,7 @@
       <Filter>Fichiers sources\Engine\Components</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Engine\Components\Axes.cpp">
-      <Filter>Fichiers d%27en-tête\Engine\Components</Filter>
+      <Filter>Fichiers sources\Engine\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

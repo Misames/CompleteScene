@@ -1,8 +1,5 @@
 #pragma once
 
-#include <stdint.h>
-#include <GL/glew.h>
-
 class Texture
 {
 private:
