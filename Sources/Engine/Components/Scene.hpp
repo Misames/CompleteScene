@@ -3,6 +3,7 @@
 #include <vector>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include "Axes.hpp"
 #include "Skybox.hpp"
 #include "Camera.hpp"
 #include "Object.hpp"
@@ -14,6 +15,7 @@ class Scene
 private:
     uint8_t id;
     bool initialized = false;
+    Axes *axes = nullptr;
     Skybox *skybox = nullptr;
     Camera *camera = nullptr;
     vector<Object *> lstObj;

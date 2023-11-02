@@ -17,6 +17,11 @@ void Scene::Initialize()
         throw bad_alloc();
     skybox->Initialize();
 
+    axes = new Axes();
+    if (!axes)
+        throw bad_alloc();
+    axes->Initialize();
+
     camera = new Camera(vec3(0.0f, 0.0f, 2.0f));
     if (!camera)
         throw bad_alloc();
@@ -44,6 +49,10 @@ void Scene::Release()
 {
     if (initialized)
     {
+        axes->Release();
+        delete axes;
+        axes = nullptr;
+
         skybox->Release();
         delete skybox;
         skybox = nullptr;
@@ -81,6 +90,9 @@ void Scene::RenderScene(GLFWwindow *glfwWindow)
         camera->Matrix(widthWindow, heightWindow, currentObject->GetShader()->GetProgram(), "u_projection");
         currentObject->Render();
     }
+
+    axes->Render(widthWindow, heightWindow);
+    camera->Matrix(widthWindow, heightWindow, axes->GetShader()->GetProgram(), "projection");
 
     glfwSwapBuffers(glfwWindow);
 }
