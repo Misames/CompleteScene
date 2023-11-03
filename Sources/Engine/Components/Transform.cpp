@@ -14,10 +14,6 @@ void Transform::Initialize()
     if (initialized)
         Release();
 
-    position = vec3(0.0f);
-    rotation = vec3(0.0f);
-    scale = vec3(0.0f);
-
     initialized = true;
     enabled = true;
     cout << "Transform initialize" << endl;

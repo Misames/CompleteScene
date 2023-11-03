@@ -122,7 +122,7 @@ bool GLShader::Initialize()
             char *infoLog = new char[infoLen + 1];
             glGetProgramInfoLog(program, infoLen, NULL, infoLog);
             cout << "Error linkage shader: " << infoLog << endl;
-            delete (infoLog);
+            delete[] infoLog;
         }
 
         glDeleteProgram(program);

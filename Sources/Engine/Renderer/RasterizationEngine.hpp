@@ -6,7 +6,7 @@
 class RasterizationEngine : public IRenderingEngine
 {
 private:
-    Scene *scene;
+    Scene *scene = nullptr;
 
 public:
     ~RasterizationEngine() override;

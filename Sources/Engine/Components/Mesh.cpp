@@ -46,14 +46,15 @@ bool Mesh::LoadMesh(const char *meshPath)
     bool ret = LoadObj(&attribs, &shapes, &materials, &warm, &err, meshPath, mtlPath.c_str(), true, false);
     if (!ret)
     {
-        cout << "Mesh not load" << endl;
-        cout << warm << err << endl;
+        cerr << "Mesh not load" << endl;
+        cerr << warm << endl;
+        cerr << err << endl;
         return false;
     }
 
-    for (auto &shape : shapes)
+    for (shape_t &shape : shapes)
     {
-        Vertex currentVertex;
+        Vertex currentVertex = Vertex();
         uint32_t indexOffset = 0;
 
         size_t fvSize = shape.mesh.num_face_vertices.size();
@@ -62,23 +63,23 @@ bool Mesh::LoadMesh(const char *meshPath)
             uint8_t fv = shape.mesh.num_face_vertices[i];
             for (uint32_t j = 0; j < fv; ++j)
             {
-                index_t idx = shape.mesh.indices[indexOffset + j];
+                index_t idx = shape.mesh.indices[static_cast<vector<index_t, allocator<index_t>>::size_type>(indexOffset) + j];
 
-                currentVertex.position.x = attribs.vertices[3 * idx.vertex_index + 0];
-                currentVertex.position.y = attribs.vertices[3 * idx.vertex_index + 1];
-                currentVertex.position.z = attribs.vertices[3 * idx.vertex_index + 2];
+                currentVertex.position.x = attribs.vertices[static_cast<vector<real_t, allocator<real_t>>::size_type>(3) * idx.vertex_index + 0];
+                currentVertex.position.y = attribs.vertices[static_cast<vector<real_t, allocator<real_t>>::size_type>(3) * idx.vertex_index + 1];
+                currentVertex.position.z = attribs.vertices[static_cast<vector<real_t, allocator<real_t>>::size_type>(3) * idx.vertex_index + 2];
 
                 if (!attribs.normals.empty())
                 {
-                    currentVertex.normal.x = attribs.normals[3 * idx.normal_index + 0];
-                    currentVertex.normal.y = attribs.normals[3 * idx.normal_index + 1];
-                    currentVertex.normal.z = attribs.normals[3 * idx.normal_index + 2];
+                    currentVertex.normal.x = attribs.normals[static_cast<vector<real_t, allocator<real_t>>::size_type>(3) * idx.normal_index + 0];
+                    currentVertex.normal.y = attribs.normals[static_cast<vector<real_t, allocator<real_t>>::size_type>(3) * idx.normal_index + 1];
+                    currentVertex.normal.z = attribs.normals[static_cast<vector<real_t, allocator<real_t>>::size_type>(3) * idx.normal_index + 2];
                 }
 
                 if (!attribs.texcoords.empty())
                 {
-                    currentVertex.uv.x = attribs.texcoords[2 * idx.texcoord_index + 0];
-                    currentVertex.uv.y = attribs.texcoords[2 * idx.texcoord_index + 1];
+                    currentVertex.uv.x = attribs.texcoords[static_cast<vector<real_t, allocator<real_t>>::size_type>(2) * idx.texcoord_index + 0];
+                    currentVertex.uv.y = attribs.texcoords[static_cast<vector<real_t, allocator<real_t>>::size_type>(2) * idx.texcoord_index + 1];
                 }
 
                 vertexs.push_back(currentVertex);

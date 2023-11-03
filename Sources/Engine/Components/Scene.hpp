@@ -8,7 +8,6 @@
 class Scene
 {
 private:
-    uint8_t id;
     bool initialized = false;
     Axes *axes = nullptr;
     Skybox *skybox = nullptr;
