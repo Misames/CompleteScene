@@ -1,7 +1,8 @@
+#include <iostream>
+
 #include "Scene.hpp"
 
 Scene::~Scene()
-#include <iostream>
 {
     Release();
 }

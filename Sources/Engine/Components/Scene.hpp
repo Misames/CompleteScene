@@ -15,6 +15,8 @@ private:
     vector<Object *> lstObj;
 
 public:
+    const char *name = "Main Scene";
+
     ~Scene();
     void Initialize();
     void Release();

@@ -34,6 +34,8 @@ void RasterizationEngine::Initialize(const RenderingEngineInfo &renderingEngineI
         throw bad_alloc();
     scene->Initialize();
 
+    glfwSetWindowTitle(renderer->GetWindow()->GetHandle(), scene->name);
+
     initialized = true;
     cout << "RasterizationEngine initialize" << endl;
 }

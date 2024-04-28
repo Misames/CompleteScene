@@ -53,7 +53,7 @@ void Engine::Release()
 void Engine::Run()
 {
     if (!initialized)
-        throw runtime_error("Engine not initialize");
+        throw runtime_error("Engine not initialized");
 
     GLFWwindow *glfwWindow = renderingEngine->GetRenderer()->GetWindow()->GetHandle();
 
