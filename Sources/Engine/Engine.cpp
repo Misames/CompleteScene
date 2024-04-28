@@ -1,3 +1,7 @@
+#include "imgui/imgui.h"
+#include "imgui/imgui_impl_glfw.h"
+#include "imgui/imgui_impl_opengl3.h"
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
@@ -30,6 +34,14 @@ void Engine::Initialize(const EngineInfo &info)
         throw bad_alloc();
     renderingEngine->Initialize(*info.renderingEngineInfo);
 
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO();
+    (void)io;
+    ImGui::StyleColorsDark();
+    ImGui_ImplGlfw_InitForOpenGL(renderingEngine->GetRenderer()->GetWindow()->GetHandle(), true);
+    ImGui_ImplOpenGL3_Init("#version 460");
+
     initialized = true;
     cout << "Engine initialize" << endl;
 }
@@ -38,6 +50,10 @@ void Engine::Release()
 {
     if (initialized)
     {
+        ImGui_ImplOpenGL3_Shutdown();
+        ImGui_ImplGlfw_Shutdown();
+        ImGui::DestroyContext();
+
         if (renderingEngine)
         {
             renderingEngine->Release();

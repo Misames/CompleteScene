@@ -86,8 +86,6 @@ void Scene::RenderScene(GLFWwindow *glfwWindow)
     int widthWindow, heightWindow;
     glfwGetWindowSize(glfwWindow, &widthWindow, &heightWindow);
     glViewport(0, 0, widthWindow, heightWindow);
-    glClearColor(0.5f, 0.5f, 0.5f, 1.f);
-    glClear(GL_COLOR_BUFFER_BIT);
 
     camera->Inputs(widthWindow, heightWindow, glfwWindow);
 
@@ -99,6 +97,4 @@ void Scene::RenderScene(GLFWwindow *glfwWindow)
 
     camera->Matrix(widthWindow, heightWindow, axes->GetShader()->GetProgram());
     axes->Render(widthWindow, heightWindow);
-
-    glfwSwapBuffers(glfwWindow);
 }

@@ -13,6 +13,7 @@
                 "Libraries\\",
                 "-g",
                 "Sources\\main.cpp",
+                "Includes\\imgui\\*.cpp",
                 "Sources\\Engine\\*.cpp",
                 "Sources\\Engine\\Components\\*.cpp",
                 "Sources\\Engine\\Renderer\\*.cpp",

@@ -1,3 +1,7 @@
+#include "imgui/imgui.h"
+#include "imgui/imgui_impl_glfw.h"
+#include "imgui/imgui_impl_opengl3.h"
+
 #include "OpenGL/OpenGLRenderer.hpp"
 
 #include "RasterizationEngine.hpp"
@@ -66,5 +70,20 @@ void RasterizationEngine::Release()
 void RasterizationEngine::Render(float lag)
 {
     GLFWwindow *glfwWindow = renderer->GetWindow()->GetHandle();
+    glClearColor(0.5f, 0.5f, 0.5f, 1.f);
+    glClear(GL_COLOR_BUFFER_BIT);
+
     scene->RenderScene(glfwWindow);
+
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplGlfw_NewFrame();
+    ImGui::NewFrame();
+
+    ImGui::Begin("Window title");
+    ImGui::Text("Some text");
+    ImGui::End();
+    ImGui::Render();
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+    glfwSwapBuffers(glfwWindow);
 }
